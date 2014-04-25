@@ -1,0 +1,70 @@
+@CHARSET "ISO-8859-1";
+
+/* IMAGE EVENT */
+#imgEvent{
+	box-shadow:0px 0px 10px rgb(0,0,0);
+	min-width:200px;
+}
+
+
+/* INFOS EVENT */
+#infosEvent{
+	width:50%;
+	min-width:200px;
+}
+#infosEvent h4{
+	text-align:center;
+}
+#infosEvent #dateEvent{
+	font-size:8pt;
+} 
+
+#infosEvent #lieuEvent{
+	font-size:11pt;
+} 
+
+
+#eventTab{
+	text-align:center;
+}
+
+
+/* CHANGE EVENT MANUAL */
+
+#changeEvent{
+	text-align:center;
+}
+
+.butChangeEvent{
+	display:inline !important;
+	width:45% !important;
+	height:50px;
+}
+
+
+
+
+/*		CALENDAR EVENT 		*/
+#eventCalendrier{
+	text-align:center;
+}
+.ui-btn-b{
+    border-color:#AAAAAA !important;
+	box-shadow:inset 0px 0px 15px #AAAAAA !important;
+}
+
+
+#eventCalendrierEventDiv{
+	margin-left:25px;
+	max-width:70%;
+	min-width:20px;
+	
+}
+#contentEventCal{
+	max-width:60%;
+}
+
+#lieuEventCal{
+	font-size:9pt;
+	text-align:right;
+}

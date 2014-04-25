@@ -1,0 +1,280 @@
+@CHARSET "ISO-8859-1";
+
+		
+															/* PARC DE JEU */
+
+#divParcDeJeu{
+	background-color:rgba(220,220,220,1);
+}
+#parcDeJeu{
+	border-collapse:collapse;
+	border:1px solid black;
+}
+
+.emplacement{
+	border:1px solid rgba(170,170,170,0.8);
+	cursor:pointer;
+	overflow:hidden;
+	background-position:center;
+	background-repeat:repeat-x;
+	
+}
+.contentEmplacement{
+	/*overflow:hidden;*/
+	font-size:8pt;
+	color:rgba(40,40,40,1);
+	margin:auto;
+	/*border:1px solid red;*/
+	text-align:center;
+}
+.contentEmplacement .titleEmplacement{
+	padding-top:1px;
+	padding-bottom:1px;
+	font-weight:bold;
+	font-size:9pt;
+}
+.contentEmplacement .jeu{
+	color:rgba(250,30,10,1);
+	/*text-shadow: -1px 0 rgb(100,100,100), 0 1px rgb(150,150,150), 1px 0 rgb(150,150,150), 0 -1px rgb(150,150,150);*/
+}
+.emplacement:hover{
+	background-color:rgba(170,170,170,0.3);
+	box-shadow:0px 0px 3px rgba(70,70,190,0.8);
+}
+
+.emplacement:active{
+	background-color:rgba(170,170,170,0.3);
+	box-shadow:inset 0px 0px 3px rgba(70,70,190,0.8);
+}
+
+
+#emplacementEnMouvement{
+	z-index:6;
+}
+
+
+/* DELETE DU PARC */
+#deleteDuParc{
+	opacity:0;
+	display:none;
+	position:fixed;
+	color:rgb(40,40,40);
+	top:75%;
+	left:50%;
+	font-size:8pt;
+	z-index:7;
+	padding:12px 13px;
+	background-color:rgba(180,180,180,0.7);
+	border:1px solid rgba(100,100,100,0.2);
+	border-radius:60px;
+	cursor:pointer;
+}
+#deleteDuParc div{
+	background-color:rgba(190,190,190,1);
+	box-shadow:0px 0px 20px rgba(140,140,140,1);
+	padding:8px 13px;
+	border-radius:20px;
+	
+}
+
+#deleteDuParc div:hover{
+	background-color:rgba(210,210,210,1);
+}
+
+
+
+
+/* OBJET */
+.titleObjet{
+	/*color:rgba(255,255,255,0);*/
+	display:none;
+	padding-top:5px !important;
+}
+
+
+/* DETAIL EMPLACEMENT */
+#detailMachine{
+	position:absolute;
+	border:1px solid rgba(70,70,70,0.8);
+	box-shadow:0px 0px 5px rgba(120,120,120,0.8);
+	background-color:rgba(220,220,220,0.9);
+	padding:10px;
+	color:rgba(40,40,40,1);
+	border-radius:0px 15px 15px 15px;
+	z-index:5;
+	font-size:8pt;
+}
+#detailMachine div{
+	display:inline-block;
+	vertical-align:top;
+	margin:2px;
+}
+#detailMachine p{
+	/*border:1px solid red;*/
+}
+#detailMachine .titleDetail{
+	font-weight:bold;
+	
+	display:block !important;
+}
+#detailMachine .dataDetail{
+	display:block !important;
+}
+
+
+
+/* SEARCH MAS */
+
+#searchMAS{
+	padding:2px;
+	display:inline-block;
+	vertical-align:top;	
+	position:absolute;
+	bottom:100px;
+	right:10px;
+	border-radius:9px 0px 0px 9px;
+	box-shadow:0px 0px 5px rgb(70,70,70);
+	background-color:rgb(240,240,240);
+}
+#openOrCloseSearch{
+	display:inline-block;
+	vertical-align:top;
+	padding:10px 10px;
+	cursor:pointer;
+	border-radius:9px 0px 0px 9px;
+	background-color:rgb(220,220,220);
+	box-shadow:0px 0px 5px rgb(70,70,70);
+	background-image:url(../img/search.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	margin-right:5px;
+}
+#openOrCloseSearch:hover{background-color:rgb(200,200,200);}
+#openOrCloseSearch:active{box-shadow:0px 0px 5px rgb(150,150,150);}
+#inSearchMAS{
+	display:none;
+	width:80px;
+}
+
+#searchMAS button{
+	cursor:pointer;	
+	display:inline-block;
+	vertical-align:top;
+	padding:0px;
+	font-size:7pt;
+	display:none;
+}
+
+
+/* FULL SCREEN */
+#fullScreen{
+	position:absolute;
+	width:25px;
+	height:25px;
+	margin-left:3px;
+	margin-top:3px;
+	cursor:pointer;
+	background-color:rgb(220,220,220);
+	border-radius:20px;
+	opacity:0.3;
+	border:1px solid rgb(120,120,120);
+	background-image:url(../img/fullScreen.png);
+	background-repeat:no-repeat;
+	background-position:center;
+}
+#fullScreen:hover{opacity:1;	box-shadow:0px 0px 2px rgb(120,120,120);}
+#fullScreen:active{opacity:1;	box-shadow:inset 0px 0px 2px rgb(120,120,120);}
+
+
+
+
+
+/* DETAIL FIX EMPLACEMENT */
+#detailFixEmp{
+	position:absolute;
+	top:65px;
+	left:0px;
+	background-color:rgba(245,245,245,1);
+	border-radius:5px;
+	padding:5px 20px;
+	color:rgb(60,60,60);
+	box-shadow:0px 0px 3px rgb(40,40,40);
+	display:none;
+	min-width:100px;
+	width:190px;
+}
+#titleDetailFixEmp,#numMachDetailFixEmp{
+	position:relative;
+	text-align:center;
+	font-size:10pt;
+	font-weight:bold;
+	margin-bottom:10px;
+	text-decoration:underline;
+	margin-top:-10px;
+}
+.titleDiv{
+	font-size:9pt;
+	font-weight:bold;
+	text-align:center;
+	margin-bottom:5px;
+	margin-top:5px;
+	box-shadow:0px 0px 2px rgba(70,70,70);
+	cursor:pointer;
+}
+
+.titleDiv:hover{box-shadow:0px 0px 4px rgba(70,70,70);}
+
+
+	/* infos */
+
+
+#divLabelDetailFixEmp,#divInfoDetailFixEmp{
+	position:relative;
+	display:inline-block;
+	vertical-align:top;
+	font-size:9pt;
+	text-align:left;
+}
+#divLabelDetailFixEmp p{
+	font-weight:bold !important;
+}
+#divInfoDetailFixEmp p{
+	max-width:100px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+#divInfoDetailFixEmp div{
+	display:inline-block;
+	vertical-align:top;
+}
+#detailMachFixEmp{
+	position:relative;
+	margin:auto;
+	text-align:center;
+	display:none;
+}
+	/* close */
+#closeDetailFixEmp{
+	position:relative;
+	border-radius:5px;
+	padding:0px 3px;
+	font-size:8pt;
+	background-color:rgba(255,50,50,0.8);
+	color:white;
+	z-index:4;
+}
+#closeDetailFixEmp:hover{box-shadow:0px 0px 4px rgb(70,70,70);}
+#closeDetailFixEmp:active{box-shadow:inset 0px 0px 4px rgb(70,70,70);}
+#pcloseDetailFixEmp{
+	text-align:right;
+	margin-top:-7px;
+	margin-right:-18px;
+}
+
+/* PERFORMANCES */
+#performanceMachFixEmp{
+	display:none;
+	font-size:8pt;
+}

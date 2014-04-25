@@ -1,0 +1,62 @@
+@CHARSET "ISO-8859-1";
+
+/*////////////////////		GENERAL		\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+.center{
+	position:relative;
+	display:block;
+	margin:auto;
+}
+
+.inlineBlock{
+	display:inline-block !important;
+	vertical-align:top;
+}
+
+
+
+.inPage{
+	font-size:8pt;
+}
+/*		NAV BAR		*/
+.navbar{
+	position:fixed;
+	bottom:0px;
+	right:0px;
+	width:100%;
+	z-index:6;
+	height:50px;
+}
+
+.backAccueil{height:40px !important;padding-top:7px !important;padding-bottom:7px !important;}
+.liBackAccueil{	margin-top:0px !important;}
+.navbar ul li{	margin-top:10px;}
+.navbar ul li a{ height:20px;}
+
+/*////////////////////		HEADER		\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+
+/*		LOGOS		*/
+
+.logos{
+	display:inline-block;
+	vertical-align:top;
+}
+
+.logos img{
+	display:block;
+}
+
+.logoBarriere{
+	margin-left:75px;
+}
+/*		INFOS RAPIDES 		*/
+.infosRapideCasino{
+	font-weight:normal;
+	text-align:center;
+	max-width:570px;
+	margin-left:auto;
+	margin-top:-10px;
+}
+.infosRapideCasino div{
+	display:inline-block;
+	verticale-align:top;
+}

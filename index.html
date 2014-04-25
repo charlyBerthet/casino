@@ -1,1 +1,371 @@
-COUCOU
+<!DOCTYPE html>
+<html>
+<head>
+<title>Casino de Megeve - Tablette</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Charly Berthet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" type="image/png" href="data/img/logo.png" />
+
+<!-- INCLUSION CSS -->
+<link rel="stylesheet" type="text/css" href="data/css/style.css" />
+<link rel="stylesheet" type="text/css" href="data/css/accueil.css" />
+<link rel="stylesheet" type="text/css" href="data/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="data/css/jquery.mobile.css" />
+<link rel="stylesheet" type="text/css" href="data/css/datebox.css" />
+
+<!-- INCLUSION JAVASCRIPT JQUERY -->
+<script type="text/javascript" src="data/js/fw/jquery.js"></script>
+<script type="text/javascript" src="data/js/fw/jquery-ui.js"></script>
+
+
+<!-- INCLUSION js CONFIG -->
+<script type="text/javascript" src="data/js/config.js"></script>
+
+<!-- INCLUSION js CLASS -->
+<script type="text/javascript" src="data/js/class/calendar.js"></script>
+<script type="text/javascript" src="data/js/class/emplacement.js"></script>
+<script type="text/javascript" src="data/js/class/machineASous.js"></script>
+<script type="text/javascript" src="data/js/class/objet.js"></script>
+<script type="text/javascript" src="data/js/class/parcDeJeu.js"></script>
+
+<!-- INCLUSION js MAIN -->
+<script type="text/javascript" src="data/js/main.js"></script>
+
+<!-- INCLUSION JAVASCRIPT JQUERY MOBILE -->
+<script type="text/javascript" src="data/js/fw/jquery.mobile.js"></script>
+<script type="text/javascript" src="data/js/fw/datebox.core.js"></script>
+<script type="text/javascript" src="data/js/fw/datebox.calbox.js"></script>
+<script type="text/javascript" src="data/js/fw/datebox.flipbox.js"></script>
+<script type="text/javascript" src="data/js/fw/jquery.mobile.datebox.utf8.js"></script>
+
+
+</head>
+<body>
+	<!-- HEADER DATA -->
+	<div id="headerData" style="display: none;">
+		<div class="divLogosInfosRapides">
+			<p class="logos">
+				<img class='logoMegeve' src="data/img/casino-megeve.png"
+					alt="Logo Casino Megeve" width="320" /> <img class='logoBarriere'
+					src="data/img/casino-barriere.png" alt="Logo Casino Barriere"
+					width="120" />
+			</p>
+			<div class="infosRapideCasino">
+				<div>
+					<span class="empty" data-empty="machines a sous"></span> MACHINES A
+					SOUS •
+				</div>
+				<div>
+					<span class="empty" data-empty="tables de jeux"></span> TABLES DE
+					JEUX •
+				</div>
+				<div>
+					<span class="empty" data-empty="restaurant"></span> RESTAURANT •
+				</div>
+				<div>
+					<span class="empty" data-empty="bars"></span> BARS
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<!-- FOOTER DATA -->
+	<div id="footerData" style="display: none;">
+		<h4>Casino Megeve</h4>
+	</div>
+
+
+	<!-- PAGE INTRO -->
+	<div data-role="page" data-theme="b" id="intro">
+
+		<!-- SCRIPT -->
+		<script type="text/javascript">
+			$(function() {
+				var search = document.URL;
+				if (search.match(/(index.html$)|(intro)/g) != null) {
+					// REZISE
+					function resize(event) {
+						var SCREEN_WIDTH = (window.innerWidth) - 5;
+						var SCREEN_HEIGHT = (window.innerHeight) - 3;
+
+						if (SCREEN_WIDTH <= 370) {
+							$("#imgMegeve").attr("width", "120px");
+							$("#imgBarriere").attr("width", "40px");
+						} else if (SCREEN_WIDTH <= 670) {
+							$("#imgMegeve").attr("width", "150px");
+							$("#imgBarriere").attr("width", "60px");
+						} else if (SCREEN_WIDTH <= 1200) {
+							$("#imgMegeve").attr("width", "300px");
+							$("#imgBarriere").attr("width", "120px");
+						} else {
+							$("#imgMegeve").attr("width", "500px");
+							$("#imgBarriere").attr("width", "200px");
+						}
+					}
+					;
+					window.onresize = function(event) {
+						resize(event);
+					};
+					resize();
+
+					// TRAITTEMENT DIV CENTRE
+					$("#divCenter").css({
+						"position" : "absolute",
+						"left" : "25%",
+						"top" : "25%",
+						"width" : "50%",
+						"height" : "50%",
+						"text-align" : "center"
+					});
+
+					$(".casino").css("border-radius", "10px");
+					$(".casino").css("padding", "30px");
+					// START ANNIMATION
+					// t=0
+					$(".casino").css("opacity", "0");
+					$(".casino").css("box-shadow",
+							"0px 0px 10px rgba(255,255,255,0)");
+
+					$(".casino")
+							.animate(
+									{
+										"opacity" : "1"
+									},
+									4500,
+									function() {
+										var length = 100;
+										for ( var i = 0; i <= length; i++) {
+											setTimeout(
+													(function(cpt) {
+														return function() {
+															$(".casino")
+																	.css(
+																			"box-shadow",
+																			"0px 0px 40px rgba(255,255,255,"
+																					+ (cpt * 0.01)
+																					+ ")");
+
+															if (cpt >= length) {
+																var lenghtJ = 70;
+																for ( var j = 0; j <= lenghtJ; j++) {
+																	setTimeout(
+																			(function(
+																					cptJ) {
+																				return function() {
+																					$(
+																							".casino")
+																							.css(
+																									"box-shadow",
+																									"0px 0px "
+																											+ ((cptJ) + 40)
+																											+ "px rgba(255,255,255,1)");
+																					if (cptJ >= lenghtJ) {
+																						setTimeout(
+																								function() {
+																									var e = $(".casino,#butpasser");
+																									e
+																											.animate(
+																													{
+																														"opacity" : "0"
+																													},
+																													300,
+																													function() {
+																														$(
+																																"#butpasser")
+																																.click();
+																													});
+																								},
+																								1000);
+
+																					}
+
+																				};
+																			})
+																					(j),
+																			(j) * 100);
+																}
+															}
+
+														};
+													})(i), (i * 0.1) * 100);
+										}
+									});
+
+				}
+
+			});
+		</script>
+
+
+
+		<div data-role="header">
+
+			<ul class="align-center" data-role="listview" data-inset="true">
+				<li><a id='butpasser' href="#accueil" data-role="button"
+					data-mini="true" data-icon="arrow-r" data-iconpos="right"
+					data-transition="slide">Passer</a></li>
+			</ul>
+
+		</div>
+		<div data-role="content">
+			<div id="divCenter">
+				<div class="casino">
+					<img id="imgMegeve" title="Casino Megeve" alt="Casino Megeve"
+						src="data/img/casino-megeve.png" /> </br> <img id="imgBarriere"
+						title="Casino Barriere" alt="Casino Barriere"
+						src="data/img/casino-barriere.png" />
+				</div>
+			</div>
+		</div>
+		<!-- /content -->
+
+	</div>
+
+
+
+	<!-- PAGE ACCUEIL -->
+	<div data-role="page" data-theme="b" id="accueil">
+
+		<!-- HEADER -->
+		<div data-role="header"></div>
+		<!-- /header -->
+
+		<!-- CONTENT -->
+		<div data-role="content">
+			<ul data-role="listview" id="menuListe">
+			</ul>
+		</div>
+		<!-- /content -->
+
+		<!-- FOOTER -->
+		<div data-role="footer"></div>
+		<!-- /footer -->
+
+	</div>
+
+
+	<!-- PAGE EVENT -->
+	<div data-role='page' data-theme="b" id='event'>
+		<div data-role='content'>
+			<div>
+
+				<div data-role="navbar" class="navbar">
+					<ul>
+						<li><a data-idjs="eventApercu" href="#" data-active="true"
+							class="ui-btn-active">Aperçu</a></li>
+						<li><a data-idjs="eventCalendrier" data-active="false"
+							href="#">Calendrier</a></li>
+					</ul>
+				</div>
+
+				<!-- EVENT APERCU -->
+				<div id="eventApercu" class="hide">
+					<div id="eventTab">
+						<img class='inlineBlock' id='imgEvent' title='' src='' alt=''
+							width="45%" />
+						<div id="infosEvent" class='inlineBlock'>
+							<h4></h4>
+							<p id="dateEvent">
+								Le <span class='date'></span></span>
+							</p>
+							<div class='content'></div>
+							<p id="lieuEvent">
+								Au <span class='lieu'></span>
+							</p>
+						</div>
+					</div>
+					<div id="changeEvent">
+						<button class="butChangeEvent" data-idx="-1" data-icon='arrow-l'
+							data-iconpos='left'>Précédent</button>
+						<button class="butChangeEvent" data-idx="1" data-icon='arrow-r'
+							data-iconpos='right'>Suivant</button>
+					</div>
+				</div>
+
+				<!-- EVENT CALENDRIER -->
+				<div id="eventCalendrier" class="hide">
+					<div id="eventCalendrierDiv" class='inlineBlock'>
+					
+						<input data-theme="a" name="mydate" id="mydate" type="date" data-role="datebox"
+						   data-options='{"mode": "calbox", "useInline": true}'>
+						   
+						   
+						   
+					</div>
+					
+					<div  id="eventCalendrierEventDiv" class='inlineBlock'>
+						<h4></h4>
+						<div >
+							<img class='inlineBlock' id='imgEventCal' title='' src='' alt=''
+							width="150px" />
+							<p class='inlineBlock' id="contentEventCal">
+							
+							</p>
+							<p id="lieuEventCal">
+							
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- PAGE RESTAURANT -->
+	<div data-role='page' data-theme="b" id='restaurant'>
+		<div data-role='content'>
+			<div data-role="navbar" class="navbar">
+				<ul>
+					<li><a data-idjs="vtour" href="#" data-active="true"
+						class="ui-btn-active">Tour Virtuel</a></li>
+					<li><a data-idjs="carte" data-active="false"
+						href="#">La Carte</a></li>
+				</ul>
+			</div>
+			
+			
+			<!-- VTOUR -->
+			<div id="vtour">
+				<div id="divVTour">
+					<!-- <embed id="krpanoSWFObject" width="100%" height="100%" 
+							flashvars="browser.useragent=Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko/20100101 Firefox/28.0&xml=data/pano/restaurant/tour.xml" 
+							allowscriptaccess="always" allowfullscreen="true" bgcolor="#000000" name="krpanoSWFObject" style="outline:none;" 
+							src="data/pano/restaurant/tour.swf" type="application/x-shockwave-flash">  -->
+							
+						<embed id="panoRestaurantSWF" width="100%" height="100%" 
+							 
+							allowscriptaccess="always" allowfullscreen="true" bgcolor="#000000" name="krpanoSWFObject" style="outline:none;" 
+							type="application/x-shockwave-flash">
+				
+				</div>			
+			</div>
+			
+			
+			<!-- CARTE -->
+			<div id="carte">
+			
+			
+			</div>
+		</div>
+	</div>
+
+
+	<!-- PAGE MACHINES A SOUS -->
+	<div data-role='page' data-theme="b" id='machinesASous'>
+		<div data-role='content'>
+			<!-- PARC DE JEU -->
+			<div id="divParcDeJeu">
+				<table id='parcDeJeu'></table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
