@@ -86,9 +86,7 @@
 		<script type="text/javascript">
 			$(function() {
 				var search = document.URL;
-				alert("avant");
-				if (search.match(/(index.html$)|(intro)/gi) != null) {
-				alert("apres");
+				if (search.match(/(\/$)|(index.html$)|(intro)/g) != null) {
 					// REZISE
 					function resize(event) {
 						var SCREEN_WIDTH = (window.innerWidth) - 5;
