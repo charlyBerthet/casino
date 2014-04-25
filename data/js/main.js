@@ -98,7 +98,7 @@ $(function(){
 			$("a[data-idjs='eventApercu']").click();
 		}
 		else if(document.URL.match(/restaurant/gi) != null){
-			console.log("SWITCH RESTAU");
+			$("a[data-idjs='vtour']").click();
 		}
 			
 		
