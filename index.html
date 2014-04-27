@@ -339,11 +339,28 @@
 							allowscriptaccess="always" allowfullscreen="true" bgcolor="#000000" name="krpanoSWFObject" style="outline:none;" 
 							src="data/pano/restaurant/tour.swf" type="application/x-shockwave-flash">  -->
 							
-						<embed id="krpanoSWFObject" width="100%" height="100%" 
+						<!-- <embed id="krpanoSWFObject" width="100%" height="100%" 
 							 
 							allowscriptaccess="always" allowfullscreen="true" bgcolor="#000000" name="krpanoSWFObject" 
 							style="outline:none;border:1px solid red;" 
-							type="application/x-shockwave-flash">
+							type="application/x-shockwave-flash">-->
+							
+							<noscript>
+					<table style="width:100%;height:100%;">
+					<tr style="valign:middle;">
+					<td><div style="text-align:center;">ERREUR:<br/>
+					Javascript non activÃ©<br/>
+					<br/>
+					ERROR:<br/>
+					Javascript not activated<br/>
+					<br/>
+					</div></td>
+					</tr>
+					</table>
+					</noscript>
+					<script>
+					embedpano({swf:"data/pano/restaurant/tour.swf", xml:"data/pano/restaurant/tour.xml", target:"divVTour", html5:"auto", passQueryParameters:true});
+					</script> 
 				
 				</div>			
 			</div>
