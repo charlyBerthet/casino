@@ -27,8 +27,10 @@ $(function(){
 			$("#panoRestaurantSWF").attr("flashvars","browser.useragent="+navigator.userAgent+"&xml=http://www.casino-megeve.com/restaurant-l-equipe/vtour/tour.xml");
 			$("#panoRestaurantSWF").attr("src","http://www.casino-megeve.com/restaurant-l-equipe/vtour/tour.swf");
 		}else{ */// SINON on prend ce qu'on a en local
+		
 			$("#panoRestaurantSWF").attr("flashvars","browser.useragent="+navigator.userAgent+"&xml=data/pano/restaurant/tour.xml");
 			$("#panoRestaurantSWF").attr("src","data/pano/restaurant/tour.swf");
+			alert($("#panoRestaurantSWF").attr("flashvars"));
 		//}
 	};
 	
