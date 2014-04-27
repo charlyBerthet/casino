@@ -30,12 +30,14 @@ $(function(){
 			$("#panoRestaurantSWF").attr("flashvars","browser.useragent="+navigator.userAgent+"&xml=data/pano/restaurant/tour.xml");
 			$("#panoRestaurantSWF").attr("src","data/pano/restaurant/tour.swf");
 		}
+		
+		alert(navigator.onLine);
 	};
 	
 	
 	
 	jsNav["carte"] = function(){
-		
+		window.open("http://www.casino-megeve.com/restaurant-l-equipe/carte.pdf");
 	};
 	
 	
