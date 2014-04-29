@@ -55,21 +55,44 @@ var CONFIG = {
 	        	 "title":"Grand Jeu de Pâques",
 	        	 "date":"20/04/2014",
 	        	 "lieu":"Casino de Megeve",
-	        	 "content":"Devinez combien pèse l'oeuf en chocolat !"
+	        	 "content":"Devinez combien pèse l'oeuf en chocolat !",
+	        	 "eventPurple":"false"
 	         },
 	         {
 	        	 "id":"restaurant",
 	        	 "title":"L'Equipe à Table",
 	        	 "date":"15/04/2014",
 	        	 "lieu":"Casino de Megeve",
-	        	 "content":"Venez manger (oui c'est le contenu je sais pas quoi mettre..)"
+	        	 "content":"Venez manger (oui c'est le contenu je sais pas quoi mettre..)",
+	        	 "eventPurple":"false"
+	         },
+	         {
+	        	 "id":"gstella",
+	        	 "title":"STELLA",
+	        	 "date":"17/10/2013",
+	        	 "heure":"21h00",
+	        	 "lieu":"Casino de Megeve",
+	        	 "content":"Nous jouons des reprises et des compos au style Funk / Pop Rock pour une ambiance de folie !",
+	        	 "eventPurple":"true",
+	        	 "styleMusic":"Funk / Pop Rock"
 	         },
 	         {
 	        	 "id":"coupeDuMonde",
 	        	 "title":"Coupe du Monde 2014 - FootBall",
 	        	 "date":"29/07/2014",
 	        	 "lieu":"Casino de Megeve",
-	        	 "content":"Le Casino de Megeve diffuse pour vous le plus grand match de FootBall 2014 !"
+	        	 "content":"Le Casino de Megeve diffuse pour vous le plus grand match de FootBall 2014 !",
+	        	 "eventPurple":"false"
+	         },
+	         {
+	        	 "id":"ingridEtGuillaume",
+	        	 "title":"INGRID et GUILLAUME",
+	        	 "date":"27/03/2014",
+	        	 "heure":"20h00",
+	        	 "lieu":"Casino de Megeve",
+	        	 "content":"Nous jouons avec plaisir et décontraction des reprises Pop Rock Groove et Swing Jazz pour une ambiance apéro, et avec énergie pour des soirées plus animées. L utilisation de BOUCLES LIVE de Guitare (JamMan) permet de simuler par moment un groupe de Rock n Roll. Effet garantie !!",
+	        	 "eventPurple":"true",
+	        	 "styleMusic":"Pop Rock Groove / Swing Jazz"
 	         }
 	    ]
 		

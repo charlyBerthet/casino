@@ -25,6 +25,7 @@
 
 <!-- INCLUSION js CLASS -->
 <script type="text/javascript" src="data/js/class/calendar.js"></script>
+<script type="text/javascript" src="data/js/class/galerieViewer.js"></script>
 <script type="text/javascript" src="data/js/class/emplacement.js"></script>
 <script type="text/javascript" src="data/js/class/machineASous.js"></script>
 <script type="text/javascript" src="data/js/class/objet.js"></script>
@@ -46,13 +47,13 @@
 	<!-- HEADER DATA -->
 	<div id="headerData" style="display: none;">
 		<div class="divLogosInfosRapides">
-			<p class="logos">
+			<p class="logos inlineBlock">
 				<img class='logoMegeve' src="data/img/casino-megeve.png"
 					alt="Logo Casino Megeve" width="320" /> <img class='logoBarriere'
 					src="data/img/casino-barriere.png" alt="Logo Casino Barriere"
 					width="120" />
 			</p>
-			<div class="infosRapideCasino">
+			<div class="infosRapideCasino inlineBlock">
 				<div>
 					<span class="empty" data-empty="machines a sous"></span> MACHINES A
 					SOUS •
@@ -70,6 +71,13 @@
 			</div>
 		</div>
 
+	</div>
+	
+	
+	
+	<!-- DATA  -->
+	<div id="data" style="display: none;">
+		<button class="arrow-r" data-icon='arrow-r' data-iconpos='right'></button>
 	</div>
 
 
@@ -268,22 +276,26 @@
 						<img class='inlineBlock' id='imgEvent' title='' src='' alt=''
 							width="45%" />
 						<div id="infosEvent" class='inlineBlock'>
-							<h4></h4>
-							<p id="dateEvent">
-								Le <span class='date'></span></span>
-							</p>
-							<div class='content'></div>
-							<p id="lieuEvent">
-								Au <span class='lieu'></span>
-							</p>
+							<div id="divInfosEvent">
+								<h4></h4>
+								<p id="dateEvent">
+									Le <span class='date'></span>
+								</p>
+								<div class='content'></div>
+								<p id="lieuEvent">
+									Au <span class='lieu'></span>
+								</p>
+							</div>
+							<div id="changeEvent">
+								<button class="butChangeEvent" data-idx="-1" data-icon='arrow-l'
+									data-iconpos='left'>Précédent</button>
+								<button class="butChangeEvent" data-idx="1" data-icon='arrow-r'
+									data-iconpos='right'>Suivant</button>
+							</div>
 						</div>
 					</div>
-					<div id="changeEvent">
-						<button class="butChangeEvent" data-idx="-1" data-icon='arrow-l'
-							data-iconpos='left'>Précédent</button>
-						<button class="butChangeEvent" data-idx="1" data-icon='arrow-r'
-							data-iconpos='right'>Suivant</button>
-					</div>
+					
+					
 				</div>
 
 				<!-- EVENT CALENDRIER -->
@@ -322,7 +334,7 @@
 		<div data-role='content'>
 			<div data-role="navbar" class="navbar">
 				<ul>
-					<li><a data-idjs="vtour" href="#" data-active="true"
+					<li><a data-idjs="vtourRestau" href="#" data-active="true"
 						class="ui-btn-active">Tour Virtuel</a></li>
 					<li><a data-idjs="carte" data-active="false"
 						href="#">La Carte</a></li>
@@ -331,21 +343,10 @@
 			
 			
 			<!-- VTOUR -->
-			<div id="vtour">
+			<div id="vtourRestau"  class="hide">
 				<script src="data/pano/restaurant/tour.js"></script>
-				<div id="divVTour">
-					<!-- <embed id="krpanoSWFObject" width="100%" height="100%" 
-							flashvars="browser.useragent=Mozilla/5.0 (Windows NT 6.3; WOW64; rv:28.0) Gecko/20100101 Firefox/28.0&xml=data/pano/restaurant/tour.xml" 
-							allowscriptaccess="always" allowfullscreen="true" bgcolor="#000000" name="krpanoSWFObject" style="outline:none;" 
-							src="data/pano/restaurant/tour.swf" type="application/x-shockwave-flash">  -->
-							
-						<!-- <embed id="krpanoSWFObject" width="100%" height="100%" 
-							 
-							allowscriptaccess="always" allowfullscreen="true" bgcolor="#000000" name="krpanoSWFObject" 
-							style="outline:none;border:1px solid red;" 
-							type="application/x-shockwave-flash">-->
-							
-							<noscript>
+				<div id="divVTourRestau">
+					<noscript>
 					<table style="width:100%;height:100%;">
 					<tr style="valign:middle;">
 					<td><div style="text-align:center;">ERREUR:<br/>
@@ -359,7 +360,7 @@
 					</table>
 					</noscript>
 					<script>
-					embedpano({swf:"data/pano/restaurant/tour.swf", xml:"data/pano/restaurant/tour.xml", target:"divVTour", html5:"auto", passQueryParameters:true});
+					embedpano({swf:"data/pano/restaurant/tour.swf", xml:"data/pano/restaurant/tour.xml", target:"divVTourRestau", html5:"auto", passQueryParameters:true});
 					</script> 
 				
 				</div>			
@@ -367,9 +368,87 @@
 			
 			
 			<!-- CARTE -->
-			<div id="carte">
+			<div id="carte" class="hide">
+				<div id="divCarte">
+					<a class="pdfview" href="http://www.casino-megeve.com/restaurant-l-equipe/carte.pdf">La Carte</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- PAGE PURPLE LOUNGE -->
+	<div data-role='page' data-theme="b" id='purpleLounge'>
+		<div data-role='content'>
+			<div data-role="navbar" class="navbar">
+				<ul>
+					
+					<li><a data-idjs="vtourPurple" href="#" data-active="true"
+						class="ui-btn-active">Tour Virtuel</a></li>
+					<li><a data-idjs="photosPurple" href="#" data-active="false"
+						>En photos</a></li>
+					<li><a data-idjs="videoPurple" data-active="false"
+						href="#">En vidéo</a></li>
+					<li><a data-idjs="eventPurple" href="#" data-active="false"
+						>Agenda</a></li>
+				</ul>
+			</div>
 			
 			
+			<!-- VTOUR PURPLE-->
+			<div id="vtourPurple"  class="hide">
+				<script src="data/pano/purpleLounge/tour.js"></script>
+				<div id="divVTourPurple">
+					<noscript>
+					<table style="width:100%;height:100%;">
+					<tr style="valign:middle;">
+					<td><div style="text-align:center;">ERREUR:<br/>
+					Javascript non activÃ©<br/>
+					<br/>
+					ERROR:<br/>
+					Javascript not activated<br/>
+					<br/>
+					</div></td>
+					</tr>
+					</table>
+					</noscript>
+					<script>
+					embedpano({swf:"data/pano/purpleLounge/tour.swf", xml:"data/pano/purpleLounge/tour.xml", target:"divVTourPurple", html5:"auto", passQueryParameters:true});
+					</script> 
+				
+				</div>		
+			</div>
+			
+			
+			<!-- PHOTOS PURPLE -->
+			<div id="photosPurple" class="hide">
+				<div id="divPhotosPurple">
+				</div>
+			</div>
+			
+			<!-- VIDEO PURPLE -->
+			<div id="videoPurple" class="hide">
+				<div id="divVideoPurple">
+					<iframe src="http://player.vimeo.com/video/20301738?byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="100%" height="100%" frameborder="0"></iframe>
+				</div>
+			</div>
+			
+			
+			<!-- EVENT PURPLE -->
+			<div id="eventPurple" class="hide">
+				<div id="divEventPurple">
+					<form>
+					    <input data-type="search" id="filterEventPurple">
+					</form>
+					<div data-role="collapsibleset" data-filter="true"
+						data-inset="true" id="contentFilterEventPurple"
+						data-input="#filterEventPurple">
+						
+						
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 $(function(){
-	jsNav["vtour"] = function(){
+	jsNav["vtourRestau"] = function(){
 		
 		var resizeVTour= function(){
 			// On met la div a la bonne taille
@@ -8,8 +8,8 @@ $(function(){
 			var HEADER_HEIGHT = parseInt($("#headerData").css("height").split("px")[0]);
 			var FOOTER_HEIGHT = parseInt($("#footerData").css("height").split("px")[0]);
 			
-			var height = (SCREEN_HEIGHT - (HEADER_HEIGHT+FOOTER_HEIGHT) - 100);
-			$("#divVTour").css({
+			var height = (SCREEN_HEIGHT - (HEADER_HEIGHT+FOOTER_HEIGHT) - 60);
+			$("#divVTourRestau").css({
 				"width":SCREEN_WIDTH - 50,
 				"height": (height > 200 ? height : 200)
 			});
@@ -23,24 +23,49 @@ $(function(){
 		
 		
 		// SI ONLINE alors recupere sur le site
-		/*if(navigator.onLine){
-			$("#panoRestaurantSWF").attr("flashvars","browser.useragent="+navigator.userAgent+"&xml=http://www.casino-megeve.com/restaurant-l-equipe/vtour/tour.xml");
-			$("#panoRestaurantSWF").attr("src","http://www.casino-megeve.com/restaurant-l-equipe/vtour/tour.swf");
-		}else{ */// SINON on prend ce qu'on a en local
-		
-			//$("#krpanoSWFObject").attr("flashvars","browser.useragent="+navigator.userAgent+"&xml=data/pano/restaurant/tour.xml");
-			//$("#krpanoSWFObject").attr("src","data/pano/restaurant/tour.swf");
-			//alert($("#panoRestaurantSWF").attr("flashvars"));
-		//}
+		///if(navigator.onLine)
+			
 	};
 	
 	
 	
 	jsNav["carte"] = function(){
-		window.open("http://www.casino-megeve.com/restaurant-l-equipe/carte.pdf");
+		
+		var resizeCarte= function(){
+			// On met la div a la bonne taille
+			var SCREEN_WIDTH = (window.innerWidth);
+			var SCREEN_HEIGHT = (window.innerHeight);
+			var HEADER_HEIGHT = parseInt($("#headerData").css("height").split("px")[0]);
+			var FOOTER_HEIGHT = parseInt($("#footerData").css("height").split("px")[0]);
+			
+			var height = (SCREEN_HEIGHT - (HEADER_HEIGHT+FOOTER_HEIGHT) - 60);
+			$("#divCarte").css({
+				"width":SCREEN_WIDTH - 50,
+				"height": (height > 200 ? height : 200)
+			});
+		};
+		
+		
+		
+		$(function(){
+			$('.pdfview').each (function(i) {
+				$(this).replaceWith(/*'<h2><a href="'+$(this).attr('href')+'">'+$(this).text()+'</a></h2>'+*/
+
+						'<iframe id="iframePdfCarte" src="http://docs.google.com/viewer?url='+$(this).attr('href')+'&#038;embedded=true" width="100%" height="100%" style="border: none;"></iframe>');
+				
+			});
+
+		});
+
+		resizeCarte();
+		$(window).unbind("onresize");
+		window.onresize = function(event) {
+			resizeCarte();
+		};
+		
 	};
 	
 	
 	if(document.URL.match(/restaurant/gi) != null)
-		$("a[data-idjs='vtour']").click();
+		$("a[data-idjs='vtourRestau']").click();
 });

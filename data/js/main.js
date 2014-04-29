@@ -59,7 +59,7 @@ $(function(){
 	
 	// ON AJOUTE LE TITLE MENU
 	for(var key in CONFIG["MENU_LISTE"])
-		$("#"+CONFIG["MENU_LISTE"][key]["id"]).find("div[data-role='header']").append("<h1>"+CONFIG["MENU_LISTE"][key]["title"]+"<span class='inPage'></span></h1>");
+		$("#"+CONFIG["MENU_LISTE"][key]["id"]).find("div[data-role='header']").find(".logos").after("<h1 class='inlineBlock'>"+CONFIG["MENU_LISTE"][key]["title"]+"<span class='inPage'></span></h1>");
 	
 	
 	
@@ -98,9 +98,36 @@ $(function(){
 			$("a[data-idjs='eventApercu']").click();
 		}
 		else if(document.URL.match(/restaurant/gi) != null){
-			$("a[data-idjs='vtour']").click();
+			$("a[data-idjs='vtourRestau']").click();
+		}
+		else if(document.URL.match(/purple/gi) != null){
+			$("a[data-idjs='vtourPurple']").click();
 		}
 			
 		
 	});
+	
+	
+	
+	
+	
+	// REMPLIT LES EVENTS PURPLE LOUNGE
+	// ON REMPLIT LES EVENTS EN FONCTION DE CONFIG[]
+	var el = $("#contentFilterEventPurple");
+	
+	for(var kEvent in CONFIG["EVENTS"]){
+		var event = CONFIG["EVENTS"][kEvent];
+		if(event["eventPurple"] == "true"){
+			var c = new Calendar();
+			var date = event["date"].split("/");
+			date = date[0]+" "+c.toogleMonth(date[1])+" "+date[2];
+			el.append('<div data-role="collapsible" data-filtertext="'+event['title']+' le '+date+' à '+event["heure"]+' au '+event["lieu"]+event["styleMusic"]+'">'+
+							'<h3>'+event['title']+'<span style="font-weight:normal;font-size:10pt;"> - le '+date+' à '+event["heure"]+' au '+event["lieu"]+'</span></h3>'+
+							'<img class="inlineBlock" height="95px" alt="'+event['id']+'" title="'+event['id']+'" src="data/img/event/purpleLounge/'+event['id']+'.jpg"/>'+
+							'<div class="inlineBlock" style="text-align:justify;width:80%;margin-left:25px;">'+event["content"]+'</br><p style="font-size:10pt;text-align:right;">Style : '+event["styleMusic"]+'</p></div>'+
+						'</div>');
+		}
+		
+		
+	}
 });
