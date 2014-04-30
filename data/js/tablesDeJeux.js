@@ -9,7 +9,7 @@ $(function(){
 			var FOOTER_HEIGHT = parseInt($("#footerData").css("height").split("px")[0]);
 			
 			var height = (SCREEN_HEIGHT - (HEADER_HEIGHT+FOOTER_HEIGHT) - 60);
-			$("#vTourTables").css({
+			$("#vTourTablesDiv").css({
 				"width":SCREEN_WIDTH - 50,
 				"height": (height > 200 ? height : 200)
 			});

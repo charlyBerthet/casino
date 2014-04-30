@@ -39,6 +39,7 @@ $(function(){
 		var nbNav = navBar.find("li").length;
 		if(nbNav > 0){
 			var pos = parseInt(nbNav / 2);
+			
 			navBar.find("li:nth-child("+pos+")").after("<li class='liBackAccueil'><a data-icon='home'  data-iconpos='bottom' href='#accueil' class='backAccueil' data-role='button' data-transition='slidefade' data-direction='reverse'>Accueil</a></li>");
 		}else if(nbNav == 0){
 			navBar.html("<li class='liBackAccueil'><a data-icon='home'  data-iconpos='bottom' href='#accueil' class='backAccueil' data-role='button' data-transition='slidefade' data-direction='reverse'>Accueil</a></li>");

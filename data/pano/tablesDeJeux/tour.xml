@@ -1,0 +1,50 @@
+<krpano version="1.0.8.15" title="Virtual Tour" onstart="startup();">
+
+	<include url="skin/vtourskin.xml"/>
+
+	<!-- set skin settings: bingmaps? gyro? -->
+	<skin_settings bingmaps="false" bingmaps_key="" gyro="true"/>
+
+	<!-- set optional skin logo url -->
+	<layer name="skin_logo" url="" scale="0.25" opened_onclick="openurl('...',_blank);"/>
+
+
+	<action name="startup">
+		if(startscene === null, copy(startscene,scene[0].name));
+		loadscene(get(startscene), null, MERGE);
+	</action>
+	
+		<autorotate accel="1.5" enabled="true" horizon="0" speed="4.5" tofov="90" waittime="1.5"/>
+         <plugin align="bottom" blendmode="screen" crop="480|0|40|40" name="roton" onclick="action(off);" ondowncrop="480|80|40|40" onhover="showtext(Rotation off,buttonstyle);" onovercrop="440|40|40|40" url="%SWFPATH%/skin/buttons.jpg" visible="true" x="+200" y="10"/>
+         <plugin align="bottom" blendmode="screen" crop="440|0|40|40" name="rotoff" onclick="action(on);" ondowncrop="440|80|40|40" onhover="showtext(Rotation on,buttonstyle);" onovercrop="480|40|40|40" url="%SWFPATH%/skin/buttons.jpg" visible="false" x="+200" y="10"/>
+   <action name="on">
+      set(plugin[roton].visible, true);
+      set(plugin[rotoff].visible, false);
+      switch(autorotate.enabled)
+   </action>
+   <action name="off">
+      set(plugin[rotoff].visible, true);
+      set(plugin[roton].visible, false);   
+      switch(autorotate.enabled)
+   </action>
+
+	
+	<scene name="scene_1" title="1" onstart="" thumburl="panos/1.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto"/>
+
+		<preview url="panos/1.tiles/preview.jpg"/>
+
+		<image>
+			<cube url="panos/1.tiles/pano_%s.jpg"/>
+			<mobile>
+				<cube url="panos/1.tiles/mobile_%s.jpg"/>
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+
+</krpano>
