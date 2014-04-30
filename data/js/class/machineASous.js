@@ -95,3 +95,22 @@ MachineASous.prototype.getDetail = function(){
 			"<span class='dataDetail' style='"+(this.jeu.toLowerCase().match(/poker/g) != null ? "color:red;" : "")+"' >"+this.jeu+"</span>"+
 		"</div></div>";
 };
+
+
+
+
+// RETOURN LES PAIEMENT POSSIBLES 
+MachineASous.prototype.getPaiement = function(){
+	
+	
+	var pai = "";
+	if(this.jeton.toLowerCase() == "oui")
+		pai = "Jetons";
+	if(this.billet.toLowerCase() == "oui"){
+		pai += (pai != "" ? "/" : "")+"Billets";
+	}
+	if(this.ticket.toLowerCase() == "oui"){
+		pai += (pai != "" ? "/" : "")+"Tickets";
+	}
+	return pai;
+};

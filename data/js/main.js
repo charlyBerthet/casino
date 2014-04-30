@@ -32,8 +32,7 @@ $(function(){
 	for(var key in CONFIG["MENU_LISTE"]){
 		var e = $("#"+CONFIG["MENU_LISTE"][key]["id"]);
 		e.prepend("<div data-role='header'></div>");
-		e.prepend("<script type='text/javascript' src='data/js/"+CONFIG["MENU_LISTE"][key]["id"]+".js'></script>");
-		e.prepend("<link rel='stylesheet' type='text/css' href='data/css/"+CONFIG["MENU_LISTE"][key]["id"]+".css' />");
+		e.prepend("<link rel='stylesheet' type='text/css' href='data/css/"+CONFIG["MENU_LISTE"][key]["id"]+".css' /><script type='text/javascript' src='data/js/"+CONFIG["MENU_LISTE"][key]["id"]+".js'></script>");
 		e.append("<div data-role='footer'></div>");
 		
 		var navBar = e.find(".navbar");
@@ -102,6 +101,12 @@ $(function(){
 		}
 		else if(document.URL.match(/purple/gi) != null){
 			$("a[data-idjs='vtourPurple']").click();
+		}else if(document.URL.match(/machine/gi) != null){
+			$("a[data-idjs='vtourParc']").click();
+		}else if(document.URL.match(/tables/gi) != null){
+			$("a[data-idjs='vtourTables']").click();
+		}else if(document.URL.match(/palo/gi) != null){
+			$("a[data-idjs='videoPalo']").click();
 		}
 			
 		

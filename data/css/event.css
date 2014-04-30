@@ -12,7 +12,6 @@
 	width:50%;
 	min-width:200px;
 	height:100%;
-	border:1px solid green;
 }
 #infosEvent h4{
 	text-align:center;
@@ -28,7 +27,6 @@
 
 #eventTab{
 	text-align:center;
-	border:1px solid blue;
 }
 
 #divInfosEvent{
@@ -41,7 +39,6 @@
 	text-align:center;
 	opacity:0.7;
 	padding-top:auto;
-	border:1px solid red;
 	height:65px;
 }
 
@@ -55,6 +52,8 @@
 
 
 /*		CALENDAR EVENT 		*/
+
+
 #eventCalendrier{
 	text-align:center;
 }
@@ -65,13 +64,13 @@
 
 
 #eventCalendrierEventDiv{
+	min-width:350px;
 	margin-left:25px;
-	max-width:70%;
-	min-width:20px;
+	overflow-y:auto;
 	
 }
 #contentEventCal{
-	max-width:60%;
+	text-align:justify;
 }
 
 #lieuEventCal{

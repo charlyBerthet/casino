@@ -1,9 +1,81 @@
 @CHARSET "ISO-8859-1";
 
+/*	INFOS PARC	*/
+#divInfosParc{
+	overflow-y:auto;
+	margin:auto;
+	margin-bottom:10px;
+	background-color:#333333;
+}
+
+
+/*	SEARCH */
+#searchMachineASous{
+	position:fixed;
+	top:5px;
+	right:5px;
+	width:200px;
+	height:0px;
+	background-color:rgb(60,60,60);
+	box-shadow:0px 0px 3px rgb(20,20,20);
+	border-radius:5px;
+}
+
+
+
+/* POP UP */
+#popUpDetailMAS{
+	position:fixed;
+	top:25%;
+	left:15%;
+	width:50%;
+	background-color: #333333;
+    border-color: #1F1F1F;
+    color: #FFFFFF;
+    text-shadow: 0 1px 0 #111111;
+    box-shadow:0px 0px 5px #111111;
+    border-radius:10px;
+    text-align:center;
+}
+#popUpDetailMAS .typeObjet{
+	font-weight:bold;
+	
+}
+		
+#popUpDetailMAS .titleInfos,#popUpDetailMAS .contentInfos{
+	display:inline-block;
+	vertical-align:top;
+	text-align:left;
+	font-size:11pt;
+	
+}
+#popUpDetailMAS .titleInfos p,#popUpDetailMAS .contentInfos p{
+	margin:0px;padding:0px;
+	padding:7px 3px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+#popUpDetailMAS .titleInfos{
+	width:150px;
+	font-weight:bold;
+}
+
+#popUpDetailMAS .contentInfos{
+	width:150px;
+}
+
+#popUpDetailMAS .numO,#popUpDetailMAS .numSocleO,#popUpDetailMAS .paiementO,#popUpDetailMAS .dernierPaiementO{background-color:#444444}
+		
+#didContentPopUp{
+	height:260px;
+}
+		
 		
 															/* PARC DE JEU */
 
-#divParcDeJeu{
+#parcMachineASous{
 	background-color:rgba(220,220,220,1);
 }
 #parcDeJeu{
@@ -23,6 +95,7 @@
 	/*overflow:hidden;*/
 	font-size:8pt;
 	color:rgba(40,40,40,1);
+	text-shadow:none;
 	margin:auto;
 	/*border:1px solid red;*/
 	text-align:center;

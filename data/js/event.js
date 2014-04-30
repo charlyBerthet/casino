@@ -2,33 +2,41 @@ $(function(){
 
 	///////		APERCU EVENT		\\\\\\
 	jsNav["eventApercu"]= function(){
-		if(document.URL.match(/#event/gi) != null){
+		if(document.URL.match(/#event/gi) != null){	
 			
 			// AFFICHE NOUVELLE EVENEMENT
 			var showNextEvent = function(time,data){
-				$("#infosEvent,#imgEvent").animate({"opacity":"0"},time,function(){
-
+				
+				$("#divInfosEvent").animate({"opacity":"0"},time);
+				$("#imgEvent").animate({"opacity":"0"},time,function(){
+					
 					// AFFICHE IMAGE
 					$("#imgEvent").attr({
 						"title":data["id"],
 						"src":"data/img/event/"+data["id"]+".jpg",
 						"alt":"Evenement du casino de megeve pour "+data["id"]+"."
 					});
+					
+					// Quand l'image est chargee on passe a la suite
+					$("#imgEvent").unbind("load");
+					$("#imgEvent").load(function(){
+						// AFFICHE TITLE
+						$("#infosEvent h4").text(data['title']);
+						
+						$("#divInfosEvent,#imgEvent").animate({"opacity":"1"},time);
 
-					// AFFICHE TITLE
-					$("#infosEvent h4").text(data['title']);
-					$("#infosEvent,#imgEvent").animate({"opacity":"1"},time);
+						// AFFICHE DATE
+						var date = data['date'].split("/");
+						var c = new Calendar();
+						$("#infosEvent .date").text(date[0]+" "+c.toogleMonth(date[1])+" "+date[2]);
 
-					// AFFICHE DATE
-					var date = data['date'].split("/");
-					var c = new Calendar();
-					$("#infosEvent .date").text(date[0]+" "+c.toogleMonth(date[1])+" "+date[2]);
+						// AFFICHE CONTENU
+						$("#infosEvent .content").text(data['content']);
 
-					// AFFICHE CONTENU
-					$("#infosEvent .content").text(data['content']);
-
-					// AFFICHE LIEU
-					$("#infosEvent .lieu").text(data['lieu']);
+						// AFFICHE LIEU
+						$("#infosEvent .lieu").text(data['lieu']);
+					});
+					
 				});
 
 			};
@@ -38,7 +46,7 @@ $(function(){
 
 			// CHANGE d'EVENEMENT
 			var nextEvent = function(time, nxt){
-
+				
 				var next = parseInt(nxt) || 1;
 				if(CONFIG["EVENTS"] != undefined && CONFIG["EVENTS"].length >= 1){
 					var el = $("#imgEvent");
@@ -47,7 +55,6 @@ $(function(){
 					for(var key in CONFIG["EVENTS"])
 						if(CONFIG["EVENTS"][key]['id'] == el.attr("title"))
 							idx=key;
-
 					// si pas encore d'event ou si on est au bout
 					if( (idx == null) || ((next > 0 ) && (idx >= CONFIG["EVENTS"].length-1))){
 						showNextEvent(time,CONFIG["EVENTS"][0]);
@@ -61,13 +68,24 @@ $(function(){
 					}
 				}else
 					console.log("IL N'Y A PAS D'EVENEMENT DE PREVUS.... !");
+				
+				// On restart le set interval
+				if(SCHEDULS["schedulNextEvent"] != null){
+					clearInterval(SCHEDULS["schedulNextEvent"]);
+					SCHEDULS["schedulNextEvent"] = setInterval(function(){
+						nextEvent(600);	
+					},5000);
+				}
+					
+				
 			};
+			
 			nextEvent(0);
 			if(SCHEDULS["schedulNextEvent"] != null)
 				clearInterval(SCHEDULS["schedulNextEvent"]);
 			SCHEDULS["schedulNextEvent"] = setInterval(function(){
 				nextEvent(600);	
-			},15000);
+			},5000);
 			
 			// CHANGE EVENT MANUAL
 			$(".butChangeEvent").unbind("click");
@@ -88,12 +106,7 @@ $(function(){
 			var height = (SCREEN_HEIGHT - (HEADER_HEIGHT+FOOTER_HEIGHT) - 60);
 			$("#infosEvent,#imgEvent").css({"height": (height > 200 ? height : 200)	});
 			
-			$("#eventTab").css({
-				"width":SCREEN_WIDTH - 50,
-				"height": (height > 200 ? height : 200)
-			});
-			
-			var hInfos = (height > 200 ? height : 200) - parseInt($("#changeEvent").css("height").split("px")[0]) - 10;
+			var hInfos = (height > 200 ? height : 200) - parseInt($("#changeEvent").css("height").split("px")[0]) - 0;
 			$("#divInfosEvent").css("height",hInfos);
 		};
 		
@@ -108,6 +121,39 @@ $(function(){
 	
 	///////		CALENDRIER EVENT		\\\\\\
 	jsNav["eventCalendrier"]= function(){
+		
+		
+		var resizeEventCalendrier= function(){
+			// On met la div a la bonne taille
+			var SCREEN_WIDTH = (window.innerWidth);
+			var SCREEN_HEIGHT = (window.innerHeight);
+			var HEADER_HEIGHT = parseInt($("#headerData").css("height").split("px")[0]);
+			var FOOTER_HEIGHT = parseInt($("#footerData").css("height").split("px")[0]);
+			var height = (SCREEN_HEIGHT - (HEADER_HEIGHT+FOOTER_HEIGHT) - 60);
+			$("#eventCalendrier").css({
+				"width":SCREEN_WIDTH - 50
+			});
+			
+			$("#eventCalendrierEventDiv").css({
+				width: (SCREEN_WIDTH  - 400)+"px",
+				height:(height > 300 ? height : 300)+"px"
+			});
+		};
+		
+		resizeEventCalendrier();
+		$(window).unbind("onresize");
+		window.onresize = function(event) {
+			resizeEventCalendrier();
+		};
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		// Retourn la date de la case
 		var getDate = function(day){

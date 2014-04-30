@@ -23,6 +23,11 @@
 										);
 		
 		this.colorEmplacementVide = "rgba(240,240,240,1)";
+		
+		this.cptResize = this.cptResize || 0;
+		
+		this.ancienCSSSearch = this.ancienCSSSearch || null;
+		this.ancienNumSearch = this.ancienNumSearch || null;
 	};
 	
 	
@@ -80,6 +85,8 @@
 		me.html(table);
 		
 		// on resize et remplit les emplacements
+		
+		
 		this.resizeEtCompleteEmpl(this.getTableOfContenu());
 		
 		
@@ -168,10 +175,7 @@
 	
 	
 	// RESIZE et REMPLIT le contenu des EMPLACEMENTs
-	ParcDeJeu.prototype.resizeEtCompleteEmpl = function(tabOfContenu){
-		// si la div de drag and drop existe on garde son contenu, pour lui remettre direct apres
-		var contentDrag = $("#emplacementEnMouvement .contentEmplacement").html();
-		
+	ParcDeJeu.prototype.resizeEtCompleteEmpl = function(tabOfContenu){		
 		// on vide les contenu
 		$(".contentEmplacement").html("");
 		
@@ -184,8 +188,19 @@
 		// SIZE des TD parents
 		var width = $(".emplacement").css('width').substr(0, $(".emplacement").css('width').length -2);
 		var height = $(".emplacement").css('height').substr(0, $(".emplacement").css('height').length -2);
+		this.cptResize ++;
 		
-		console.log($(".emplacement").css('width'));
+		
+		if(this.cptResize < 20 && width <= 0 || height <= 0){
+			var that = this;
+			setTimeout(function(){
+				that.resizeEtCompleteEmpl(tabOfContenu);
+			},200);
+			return 0;
+		}
+		
+		
+		this.cptResize = 0;
 		// on met a jour la taille des contenus
 		$(".contentEmplacement").css({
 			"width":width+"px",
@@ -210,13 +225,13 @@
 			}			
 			cpt ++ ;
 		});
-		
-		
-		
-		
+//		   /\							   /\
+		  //\\							  //\\
+		 //__\\							 //__\\
+		////\\\\	AFFICHE ONLY DENO	////\\\\
 		// On fonction de la taille des emplacements, on affiche pas tout dedans !
 		
-		if(parseInt(height) < 58){ // Affiche MAS + Num + Deno
+		/*if(parseInt(height) < 58){ // Affiche MAS + Num + Deno
 			// Si c'est un poker, le num est rouge !
 			$(".contentEmplacement").each(function(){
 				
@@ -228,15 +243,19 @@
 			});
 			
 			$(".contentEmplacement .jeu").parent("p").remove();
-		}
+		}*/
 		
+		
+		$(".contentEmplacement .num, .contentEmplacement .jeu").parent("p").css("display","none");
+		$(".contentEmplacement .titleEmplacement").css("display","none");
+		$(".contentEmplacement p, .contentEmplacement .deno").css("font-weight","bold");
 		if(parseInt(height) < 42){ // Affiche MAS + Num
-			$(".contentEmplacement .deno, .contentEmplacement .jeu").parent("p").remove();
+			
 		}
 		
 		if(parseInt(height) < 28){ // Affiche Num
-			$(".contentEmplacement .titleEmplacement").css("display","none");
-			$(".contentEmplacement p, .contentEmplacement .num").css("font-weight","bold");
+			
+			
 		}
 	};
 	
@@ -496,6 +515,53 @@
 		};
 		
 		moi.defaultShadowEmplacement(null,null);
+		
+		
+		
+		// Retourn la chaine avec comme premiere lettre une MAJUSCULE
+		var getMaj = function(str){
+			var s = "";
+			for(var k in str)
+				s += (k == 0 ? str[k].toUpperCase() : str[k]);
+			return s;
+		};
+		
+		// CLICK SUR EMPLACEMENT
+		$(".emplacement").unbind("click");
+		$(".emplacement").click(function(){
+			var type= $(this).find(".titleEmplacement").text();
+			if(	(type != "undefined" && type != undefined && type != null && type != "") ){// != EMPLACEMENT VIDE
+				var eM = $("#popUpDetailMAS");
+				eM.css("display","inline");
+				var titleType = "Vide";
+				var num = marque = socle = deno = paiement = jeu = denierPaiement = "Aucun";
+
+				if(type.toLowerCase().match(/machine/gi) != null){// EMPLACEMENT MACHE
+					titleType = "Machine à Sous";
+					num = $(this).find(".num").text();
+					var mach = moi.getMachine(parseInt(num));
+					marque = mach.marque;
+					socle = mach.numSocle;
+					deno = mach.denomination+"€";
+					paiement = mach.getPaiement();
+					jeu = mach.jeu;
+					denierPaiement = "Aucun";
+				}else{// EMPLACEMENT OBJET
+					titleType = (type.match(/mur/gi) != null ? "Mur" : type.match(/porte/gi) != null ? "Porte" : getMaj(type));
+				}
+				var elC = eM.find(".contentInfos");
+				elC.find(".numO").text(num);
+				elC.find(".marqueO").text(marque);
+				elC.find(".numSocleO").text(socle);
+				elC.find(".denoO").text(deno);
+				elC.find(".paiementO").text(paiement);
+				elC.find(".jeuO").text(jeu);
+				elC.find(".dernierPaiementO").text(denierPaiement);
+				
+				eM.find(".typeObjet").text(titleType);
+				eM.animate({"opacity":"1"},400);
+			}
+		});
 	};
 	
 	
@@ -605,6 +671,28 @@
 	
 	
 	
+	
+	// AFFECTE UN CSS A L'EMPLACEMENT DE LA MACHINE
+	ParcDeJeu.prototype.setCSS2Emplacement = function(numMachine,jsonCss){
+		
+		$(".emplacement").each(function(){
+			if(this.ancienNumSearch != null && this.ancienCSSSearch != null){
+				if($(this).find(".num").text() == this.ancienNumSearch){
+					$(this).css("background-color",this.ancienCSSSearch);
+				}
+			}
+			if( numMachine != undefined && numMachine != null && numMachine != ""){
+				if($(this).find(".num").text() == numMachine){
+
+					this.ancienCSSSearch = $(this).css("background-color");
+					this.ancienNumSearch = numMachine;
+					$(this).css(jsonCss);
+				}
+			}
+		});
+
+
+	};
 	
 	
 	
