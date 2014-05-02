@@ -131,9 +131,12 @@ $(function(){
 			var FOOTER_HEIGHT = parseInt($("#footerData").css("height").split("px")[0]);
 			var height = (SCREEN_HEIGHT - (HEADER_HEIGHT+FOOTER_HEIGHT) - 60);
 			$("#eventCalendrier").css({
-				"width":SCREEN_WIDTH - 50
+				"width":SCREEN_WIDTH - 50,
+				"height": (height > 200 ? height : 200)
 			});
 			
+			
+			$("#eventCalendrierDiv").css("margin-top",+"px");
 			$("#eventCalendrierEventDiv").css({
 				width: (SCREEN_WIDTH  - 400)+"px",
 				height:(height > 300 ? height : 300)+"px"
@@ -219,35 +222,16 @@ $(function(){
 		
 		
 		
-		// AFFICHE EVENT
-		var showEventCal = function(event){
-			var dateTab = event["date"].split("/");
-			var cal = new Calendar();
-			$("#eventCalendrierEventDiv").children("h4").text(dateTab[0]+" "+cal.toogleMonth(dateTab[1])+" "+dateTab[2]+" - "+event["title"]);
-			$("#imgEventCal").attr({
-				"title":event['id'],
-				"alt":"Au casino de Megeve ! Evenement "+event['title']+".",
-				"src":"data/img/event/"+event['id']+".jpg"
-			});
-			$("#contentEventCal").html(event["content"]);
-			$("#lieuEventCal").html("Au "+event["lieu"]);
-		};
-		
-		
-		
 		//	CLICK SUR UNE DATE
 		var clickDate = function(elem){
-			if(elem.attr("class").match(/empty/gi) == null){
-				var date = getDate(elem.text());
-				var event = isThereEvent(date);
-				
-				if(event != false){
-					showEventCal(event);
-				}
-			}
+
+			var dateTab = getDate(elem.text()).split("/");
+			var cal = new Calendar();
+			var date = dateTab[0]+" "+cal.toogleMonth(dateTab[1])+" "+dateTab[2];
+			$("#filterEventCasino").val(date);
+			$("#filterEventCasino").change();
 		};
 		
-		showEventCal(CONFIG["EVENTS"][0]);
 		
 		showDateEventCalendar();
 		$("#eventCalendrier	").unbind("click");

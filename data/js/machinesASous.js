@@ -132,7 +132,7 @@ $(function(){
 	
 	
 	jsNav["infosParc"] = function(){
-		var resizeVTour= function(){
+		/*var resizeVTour= function(){
 			// On met la div a la bonne taille
 			var SCREEN_WIDTH = (window.innerWidth);
 			var SCREEN_HEIGHT = (window.innerHeight);
@@ -140,14 +140,16 @@ $(function(){
 			var FOOTER_HEIGHT = parseInt($("#footerData").css("height").split("px")[0]);
 			
 			var height = (SCREEN_HEIGHT - (HEADER_HEIGHT+FOOTER_HEIGHT) - 60);
-			$("#divInfosParc").css({
+			$("#infosParc").css({
 				"width":SCREEN_WIDTH - 50,
-				"height": (height > 200 ? height : 200)
+				"height": (height > 200 ? height : 200),
+				"padding":"0px",
+				"margin":"0px"
 			});
 		};
 		resizeVTour();
 		$(window).unbind("onresize");
-		window.onresize = function(event) {resizeVTour();};
+		window.onresize = function(event) {resizeVTour();};*/
 	};
 	
 	

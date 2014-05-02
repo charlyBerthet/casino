@@ -95,144 +95,18 @@
 	<!-- ###################################################################################" -->
 	<div data-role="page" data-theme="b" id="intro">
 
-		<!-- SCRIPT -->
-		<script type="text/javascript">
-			$(function() {
-				var search = document.URL;
-				if (search.match(/(\/$)|(index.html$)|(intro)/g) != null) {
-					// REZISE
-					function resize(event) {
-						var SCREEN_WIDTH = (window.innerWidth) - 5;
-						var SCREEN_HEIGHT = (window.innerHeight) - 3;
+		<script type="text/javascript" src="data/js/intro.js"></script>
 
-						if (SCREEN_WIDTH <= 370) {
-							$("#imgMegeve").attr("width", "120px");
-							$("#imgBarriere").attr("width", "40px");
-						} else if (SCREEN_WIDTH <= 670) {
-							$("#imgMegeve").attr("width", "150px");
-							$("#imgBarriere").attr("width", "60px");
-						} else if (SCREEN_WIDTH <= 1200) {
-							$("#imgMegeve").attr("width", "300px");
-							$("#imgBarriere").attr("width", "120px");
-						} else {
-							$("#imgMegeve").attr("width", "500px");
-							$("#imgBarriere").attr("width", "200px");
-						}
-					}
-					;
-					window.onresize = function(event) {
-						resize(event);
-					};
-					resize();
-
-					// TRAITTEMENT DIV CENTRE
-					$("#divCenter").css({
-						"position" : "absolute",
-						"left" : "25%",
-						"top" : "25%",
-						"width" : "50%",
-						"height" : "50%",
-						"text-align" : "center"
-					});
-
-					$(".casino").css("border-radius", "10px");
-					$(".casino").css("padding", "30px");
-					// START ANNIMATION
-					// t=0
-					$(".casino").css("opacity", "0");
-					$(".casino").css("box-shadow",
-							"0px 0px 10px rgba(255,255,255,0)");
-
-					$(".casino")
-							.animate(
-									{
-										"opacity" : "1"
-									},
-									4500,
-									function() {
-										var length = 100;
-										for ( var i = 0; i <= length; i++) {
-											setTimeout(
-													(function(cpt) {
-														return function() {
-															$(".casino")
-																	.css(
-																			"box-shadow",
-																			"0px 0px 40px rgba(255,255,255,"
-																					+ (cpt * 0.01)
-																					+ ")");
-
-															if (cpt >= length) {
-																var lenghtJ = 70;
-																for ( var j = 0; j <= lenghtJ; j++) {
-																	setTimeout(
-																			(function(
-																					cptJ) {
-																				return function() {
-																					$(
-																							".casino")
-																							.css(
-																									"box-shadow",
-																									"0px 0px "
-																											+ ((cptJ) + 40)
-																											+ "px rgba(255,255,255,1)");
-																					if (cptJ >= lenghtJ) {
-																						setTimeout(
-																								function() {
-																									var e = $(".casino,#butpasser");
-																									e
-																											.animate(
-																													{
-																														"opacity" : "0"
-																													},
-																													300,
-																													function() {
-																														$(
-																																"#butpasser")
-																																.click();
-																													});
-																								},
-																								1000);
-
-																					}
-
-																				};
-																			})
-																					(j),
-																			(j) * 100);
-																}
-															}
-
-														};
-													})(i), (i * 0.1) * 100);
-										}
-									});
-
-				}
-
-			});
-		</script>
-
-
-
-		<div data-role="header">
-
+		<!-- <div data-role="header" style="position:fixed;top:0px;left:0px;width:100%;z-index:20;">
 			<ul class="align-center" data-role="listview" data-inset="true">
 				<li><a id='butpasser' href="#accueil" data-role="button"
 					data-mini="true" data-icon="arrow-r" data-iconpos="right"
 					data-transition="slide">Passer</a></li>
 			</ul>
-
-		</div>
+		</div>  -->
+		
 		<div data-role="content">
-			<div id="divCenter">
-				<div class="casino">
-					<img id="imgMegeve" title="Casino Megeve" alt="Casino Megeve"
-						src="data/img/casino-megeve.png" /> </br> <img id="imgBarriere"
-						title="Casino Barriere" alt="Casino Barriere"
-						src="data/img/casino-barriere.png" />
-				</div>
-			</div>
+			<div style="background-image:url(data/img/intro/trame.png);left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 100%; width: 100%; z-index:18; position: fixed;"></div>
 		</div>
 		<!-- /content -->
 
@@ -314,7 +188,16 @@
 					</div>
 					
 					<div  id="eventCalendrierEventDiv" class='inlineBlock'>
-						<h4></h4>
+						<form>
+					   		<input data-type="search" id="filterEventCasino" placeHolder="saisir critère(s)">
+						</form>
+						<div data-role="collapsibleset" data-filter="true"
+							data-inset="true" id="contentFilterEventCasino"
+							data-input="#filterEventCasino">
+							
+							
+						</div>
+						<!-- <h4></h4>
 						<div >
 							<img class='inlineBlock' id='imgEventCal' title='' src='' alt=''
 							width="150px" />
@@ -324,7 +207,7 @@
 							<p id="lieuEventCal">
 							
 							</p>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -554,9 +437,14 @@
 		
 		
 		<!-- LES INFOS PARC DE JEU -->
-		<div id="infosParc" class="hide">
+		<div id="infosParc" class="hide" style="text-align:center;">
+			<!-- <img id="bgMAS" alt="machine a sous" src="data/img/machinesASous/mas.jpg" width="100%" height="100%"/>-->
 			<div id="divInfosParc">
-				COUCOU
+				<p class="txtBig bold">65 machines de 1ct à 5 euros !</p>
+				<p><span class="bold">Horraires :</span> ouvert tous les jours de 11h00 à 3h00 </br>(<span class="sousLigne txtSmall">ouvert jusqu'à 4h30 du 25 décembre au 04 Janvier</span>).</p>
+				<p>Acceptent jetons <span class="bold">OU</span> tickets & billets</p>
+				<p class="txtSmall">Casino de Megève, 199 rue Charles Feige - Tél. 04 50 93 01 83</p>
+				<p class="txtSmall accesLibre">Accès libre sur simple vérification d'identité </br>(en application des nouvelles dispositions de la réglementation)</p>
 			</div>
 		</div>
 		
@@ -609,7 +497,15 @@
 
 			<!-- INFOS TABLES -->
 			<div id="infosTables" class="hide">
-				
+				<div id="butJeux">
+					
+				</div>
+				<div id="infosJeu">
+					<p id="titleInfosJeu" class="bold txtBig">Choisissez un jeu</p>
+					<p id="horraireInfosJeu" class="sousLigne"></p>
+					<p id="contentInfosJeu"></p>
+					<p id="accesLibreInfosJeu" class="txtSmall">Accès libre sur simple vérification d'identité </br>(en application des nouvelles dispositions de la réglementation)</p>
+				</div>
 			</div>
 		</div>
 	</div>

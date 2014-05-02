@@ -1,0 +1,33 @@
+#infosTables{
+	background-color:rgb(20,100,20);
+	border:20px solid rgb(100,60,20);
+	border-radius:25px;
+	overflow:auto;
+	margin:auto;
+}
+
+#butJeux{text-align:center;}
+#butJeux button{
+	border:none;
+	display:inline-block !important;
+	vertical-align:top !important;
+	width:160px;
+	margin:25px 30px;
+	border-radius:999px;
+}
+
+.black{background-color:black !important;}
+.red{background-color:red !important;}
+
+#accesLibreInfosJeu{
+	margin-top:25px;
+	padding-top:25px;
+	
+}
+
+
+#infosJeu{
+	margin:auto;
+	text-align:center;
+	margin:25px 40px;
+}

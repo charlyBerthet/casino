@@ -1,0 +1,1 @@
+Ratio des images > 4:3

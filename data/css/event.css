@@ -62,13 +62,19 @@
 	box-shadow:inset 0px 0px 15px #AAAAAA !important;
 }
 
+#eventCalendrierDiv{
+	
+}
 
 #eventCalendrierEventDiv{
 	min-width:350px;
 	margin-left:25px;
 	overflow-y:auto;
 	
+	
 }
+
+/*
 #contentEventCal{
 	text-align:justify;
 }
@@ -76,4 +82,4 @@
 #lieuEventCal{
 	font-size:9pt;
 	text-align:right;
-}
+}*/

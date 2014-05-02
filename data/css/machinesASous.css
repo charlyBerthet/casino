@@ -2,10 +2,14 @@
 
 /*	INFOS PARC	*/
 #divInfosParc{
+	border-radius:5px;
+	box-shadow:0px 0px 5px rgb(20,20,20);
 	overflow-y:auto;
 	margin:auto;
 	margin-bottom:10px;
 	background-color:#333333;
+	padding:15px;
+	display:inline-block;
 }
 
 

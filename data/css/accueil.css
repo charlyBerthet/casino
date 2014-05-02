@@ -11,9 +11,15 @@
 	display:inline-block !important;
 	vertical-align:top;
 }
-
-
-
+.bold{font-weight:bold;}
+.txtSmall{font-size:9pt;}
+.sousLigne{text-decoration:underline;}
+.txtBig{font-size:15pt;}
+.accesLibre{
+	margin-top:35px;
+	padding-top:15px;
+	border-top:1px solid white;
+}
 .inPage{
 	font-size:8pt;
 }
@@ -30,7 +36,7 @@
 .backAccueil{height:40px !important;padding-top:7px !important;padding-bottom:7px !important;}
 .liBackAccueil{	margin-top:0px !important;}
 .navbar ul li{	margin-top:10px;}
-.navbar ul li a{ height:20px;}
+.navbar ul li a{ height:25px;}
 
 /*////////////////////		HEADER		\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
