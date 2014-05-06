@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+#aProposInfos{
+	margin:auto;
+	text-align:center;
+	
+}
+#aProposAccesLibre{
+	margin:auto;
+	text-align:center;
+}
+#aProposMeteo{
+	text-shadow:none;
+	margin-bottom:30px;
+}
+.meteoWidget{
+	margin:auto;
+}

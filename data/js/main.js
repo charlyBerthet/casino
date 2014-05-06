@@ -1,7 +1,8 @@
 /////////////		GLOBALES		\\\\\\\\\\\\\\\
 var jsNav = new Array();
-var CPT_SEC_VEILLE = 0, INTRO = TIME_VEILLE = INTER_VEILLE = null, GO_VEILLE = 180, AFTER_INTRO = "#accueil";
+var CPT_SEC_VEILLE = 0, INTRO = TIME_VEILLE = INTER_VEILLE = null, GO_VEILLE = 220, AFTER_INTRO = "#accueil";
 var SCHEDULS = new Array();
+var animation = new Animation();
 var clearSheduls = function(){
 	for(var key in SCHEDULS)
 		if(SCHEDULS[key] != null)
@@ -10,9 +11,12 @@ var clearSheduls = function(){
 
 
 $(function(){
+	// DEV BUG
+	//animation.firstAccueil();
+	
+	
 	// MISE EN VEILLE
 	TIME_VEILLE = function(){
-		console.log(CPT_SEC_VEILLE);
 		CPT_SEC_VEILLE = CPT_SEC_VEILLE + 1 ;
 		if(CPT_SEC_VEILLE >= GO_VEILLE){
 			AFTER_INTRO = location.hash;
@@ -107,6 +111,7 @@ $(function(){
 	
 	
 	
+	
 	// SI ON Y ARRIVE PAR CHANGEMENT DE PAGE
 	$( window ).hashchange(function( event ) {
 		
@@ -128,6 +133,8 @@ $(function(){
 			$("a[data-idjs='vtourTables']").click();
 		}else if(document.URL.match(/palo/gi) != null){		// PALO ALTO
 			$("a[data-idjs='videoPalo']").click();
+		}else if(document.URL.match(/propos/gi) != null){		// PALO ALTO
+			$("a[data-idjs='aPropos']").click();
 		}else if(document.URL.match(/(intro)|(\/$)|(html$)/gi) != null){	// INTRO, VEILLE
 			$("#bgIntro").remove();
 			$("#logo").remove();

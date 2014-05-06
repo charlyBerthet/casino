@@ -1,3 +1,4 @@
+
 var CONFIG = {
 		
 		/////////////////		INFOS RAPIDES		\\\\\\\\\\\\\\\\\\\\
@@ -41,7 +42,7 @@ var CONFIG = {
 		    	  "infos":"La discothèque en face du Casino."
 		      },
 		      {	// INDEX 6
-		    	  "id":"aPropos",
+		    	  "id":"aProposContact",
 		    	  "title":"A Propos",
 		    	  "infos":"Informations complémentaires sur le Casino."
 		      },

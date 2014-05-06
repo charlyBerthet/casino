@@ -128,6 +128,8 @@ $(function(){
 			divContent.click(function(){
 				$("#bgIntro").fadeTo(2000,0.4);
 				$("#logo").fadeTo(2000,0,function(){
+					if(animation.isFirstAccueil)
+						animation.firstAccueil();
 					// ON LANCE L'INTERVAL POUR LA MISE EN VEILLE
 					INTER_VEILLE = setInterval(function(){TIME_VEILLE();}, 1000);
 					if(AFTER_INTRO == undefined || AFTER_INTRO == "undefined" || AFTER_INTRO == null || AFTER_INTRO == ""  || AFTER_INTRO == "#" || AFTER_INTRO == "#undefined")

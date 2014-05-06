@@ -10,7 +10,18 @@
 	background-color:#333333;
 	padding:15px;
 	display:inline-block;
+	vertical-align:top;
+	z-index:10;
+	/*width:360px;
+	margin-left:-600px;*/
 }
+/*#bgMAS{
+	z-index:1;
+	display:inline-block;
+	vertical-align:top;
+	margin-top:-750px;
+	
+}*/
 
 
 /*	SEARCH */

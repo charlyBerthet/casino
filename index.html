@@ -11,9 +11,11 @@
 <!-- INCLUSION CSS -->
 <link rel="stylesheet" type="text/css" href="data/css/style.css" />
 <link rel="stylesheet" type="text/css" href="data/css/accueil.css" />
+<link rel="stylesheet" type="text/css" href="data/css/animation.css" />
 <link rel="stylesheet" type="text/css" href="data/css/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="data/css/jquery.mobile.css" />
 <link rel="stylesheet" type="text/css" href="data/css/datebox.css" />
+
 
 <!-- INCLUSION JAVASCRIPT JQUERY -->
 <script type="text/javascript" src="data/js/fw/jquery.js"></script>
@@ -21,7 +23,8 @@
 
 
 <!-- INCLUSION js CONFIG -->
-<script type="text/javascript" src="data/js/config.js"></script>
+<script type="text/javascript" src="editeAppliCasinoMegeve/dataAppli.js"></script>
+<!-- <script type="text/javascript" src="file:///C:/wamp/www/Casino%20Megeve%20Tablette/editeAppliCasinoMegeve/dataAppli.js"></script> -->
 
 <!-- INCLUSION js CLASS -->
 <script type="text/javascript" src="data/js/class/calendar.js"></script>
@@ -32,7 +35,9 @@
 <script type="text/javascript" src="data/js/class/parcDeJeu.js"></script>
 
 <!-- INCLUSION js MAIN -->
+<script type="text/javascript" src="data/js/animation.js"></script>
 <script type="text/javascript" src="data/js/main.js"></script>
+
 
 <!-- INCLUSION JAVASCRIPT JQUERY MOBILE -->
 <script type="text/javascript" src="data/js/fw/jquery.mobile.js"></script>
@@ -438,7 +443,7 @@
 		
 		<!-- LES INFOS PARC DE JEU -->
 		<div id="infosParc" class="hide" style="text-align:center;">
-			<!-- <img id="bgMAS" alt="machine a sous" src="data/img/machinesASous/mas.jpg" width="100%" height="100%"/>-->
+			<!-- <img id="bgMAS" alt="machine a sous" src="data/img/machinesASous/mas.jpg" width="800px" height="2700px"/>	 -->
 			<div id="divInfosParc">
 				<p class="txtBig bold">65 machines de 1ct à 5 euros !</p>
 				<p><span class="bold">Horraires :</span> ouvert tous les jours de 11h00 à 3h00 </br>(<span class="sousLigne txtSmall">ouvert jusqu'à 4h30 du 25 décembre au 04 Janvier</span>).</p>
@@ -446,6 +451,7 @@
 				<p class="txtSmall">Casino de Megève, 199 rue Charles Feige - Tél. 04 50 93 01 83</p>
 				<p class="txtSmall accesLibre">Accès libre sur simple vérification d'identité </br>(en application des nouvelles dispositions de la réglementation)</p>
 			</div>
+			
 		</div>
 		
 		
@@ -546,6 +552,45 @@
 	
 	
 	
+	<!-- ###################################################################################" -->
+						<!-- PAGE A PROPOS -->
+	<!-- ###################################################################################" -->
+	<div data-role='page' data-theme="b" id='aProposContact'>
+		<div data-role='content' style="overflow:auto;">
+			<div data-role="navbar" class="navbar">
+				<ul>
+					<li><a data-idjs="aPropos" href="#" data-active="true"
+						class="ui-btn-active">A Propos</a></li>
+					<li><a data-idjs="leTemps" href="#" data-active="false">
+							Météo</a></li>
+				</ul>
+			</div>
+			
+			<!-- A PROPOS -->
+			<div id="aPropos" class="hide">
+				<div id="aProposInfos">
+					<p><span class="bold txtBig">CASINO de Megève</span><span class="txtSmall"> - RCS B 402746226 - APE 9200 Z</span></p>
+					<p>Siège social : S.A.S Casino de megève</p>
+					<p>Tél : 04 50 93 01 83</p>
+					<p>Mail : contact@casino-megeve.com</p>
+				</div>
+				
+			
+				<div id="aProposAccesLibre">
+					<p class="accesLibre txtSmall">Accès libre sur simple vérification d'identité (en application des nouvelles dispositions de la réglementation)</p>
+					<p class="txtSmall">Jouer comporte des risques : endettement, dépendance… Appelez le 0805 02 00 00 (appel gratuit)</p>
+				</div>
+				
+			</div>
+		</div>
+		
+		<!-- A LE TEMPS -->
+		<div id="leTemps" class="hide">
+		<div id="aProposMeteo">
+					<div class="meteoWidget" style="font-family: Arial;background-color: #fbfbfb;border: 1px solid #e7e7e7;width: 255px;height: 335px;-moz-box-shadow: 0 0 2px 1px #e7e7e7;-webkit-box-shadow: 0 0 2px 1px #e7e7e7;box-shadow: 0 0 2px 1px #e7e7e7;overflow: hidden; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;"><div style="width: 255px;height: 335px;"><div style="margin:7px 10px;"><div style="color: #222222;font-family: Arial;font-size: 12px;font-weight: bold;margin: 0px 0px 7px 0px;line-height: 14px;">Prévisions météorologiques<br/><span style="font-weight:normal;">Megève</span></div><iframe id="widget-frame" src="http://www.meteovista.fr/Go/ExternalWidgetsNew/ThreeDaysCity?gid=4284698&sizeType=1&temperatureScale=Celsius&defaultSettings=True" width="235" height="216" frameborder="0" scrolling="no" style="border: none;" allowtransparency="true"></iframe><a href="http://www.meteovista.fr/Europe/France/Megeve/4284698" style="background: url(http://www.meteovista.fr/Shared/Images/list_icon_blue_trans.png) no-repeat scroll left 1px transparent;color: #0160b2;font-family: Arial;font-size: 12px;font-weight: normal;padding-left: 14px;margin: 7px 0px 5px 0px;line-height: 12px;outline: none;text-decoration: none;display: inline-block;" target="_blank">Météo à Megève</a><a href="http://www.meteovista.fr/" style="display: block;height: 25px;width: 113px;margin: 0px 10px 8px 0px;outline: none;text-decoration: none;" title="Meteovista.fr la météo autrement" target="_blank"><img src="http://www.meteovista.fr/Shared/Images/variations/fr-FR/new-widget-logo-FR-color.png" width="113" height="25" alt="Meteovista.fr la météo autrement" style="border: none;background-color: transparent;box-shadow: none;" /></a></div></div></div>
+				</div>
+		</div>
+	</div>
 </body>
 </html>
 
