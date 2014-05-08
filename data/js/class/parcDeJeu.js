@@ -186,8 +186,8 @@
 		});
 		
 		// SIZE des TD parents
-		var width = $(".emplacement").css('width').substr(0, $(".emplacement").css('width').length -2);
-		var height = $(".emplacement").css('height').substr(0, $(".emplacement").css('height').length -2);
+		var width = parseInt($(".emplacement").css('width').substr(0, $(".emplacement").css('width').length -2));
+		var height = parseInt($(".emplacement").css('height').substr(0, $(".emplacement").css('height').length -2)) ;
 		this.cptResize ++;
 		
 		
@@ -249,14 +249,7 @@
 		$(".contentEmplacement .num, .contentEmplacement .jeu").parent("p").css("display","none");
 		$(".contentEmplacement .titleEmplacement").css("display","none");
 		$(".contentEmplacement p, .contentEmplacement .deno").css("font-weight","bold");
-		if(parseInt(height) < 42){ // Affiche MAS + Num
-			
-		}
-		
-		if(parseInt(height) < 28){ // Affiche Num
-			
-			
-		}
+		$(".contentEmplacement p").css("margin","0px");
 	};
 	
 	
@@ -300,6 +293,40 @@
 	/* GET EXTRACT OF PARC */
 	ParcDeJeu.prototype.getExtractionParc = function(){
 		return JSON.stringify(this);
+	};
+	
+	
+	
+	
+	
+	/*	GET PARC FROM STRING	*/
+	var getParcFromString = function(parcStr){
+		try{
+			parc = /*JSON.parse(*/ parcStr/*)*/ ;
+			
+			// On cast chaque Objet en son type propre
+				// Les machines a sous, en machineASous
+			for(var key in parc.listeOfMachines){
+				parc.listeOfMachines[key].__proto__ = MachineASous.prototype;
+				parc.listeOfMachines[key].constructor.call(parc.listeOfMachines[key]);
+			}
+			
+			// Les objets, en Objet
+			for(var key in parc.listeOfObjets){
+				parc.listeOfObjets[key].__proto__ = Objet.prototype;
+				parc.listeOfObjets[key].constructor.call(parc.listeOfObjets[key]);
+			}
+			
+				// le parc de jeu en parcDeJeu
+			parc.__proto__ = ParcDeJeu.prototype;
+			parc.constructor.call(parc);
+			
+			return parc;
+		}catch(e){
+			console.log("Erreur lors du chargement du parc online, raison : "+e);
+		}
+		return null;
+		
 	};
 	
 	
@@ -545,7 +572,7 @@
 					deno = mach.denomination+"€";
 					paiement = mach.getPaiement();
 					jeu = mach.jeu;
-					denierPaiement = "Aucun";
+					denierPaiement = mach.lastPaiement;
 				}else{// EMPLACEMENT OBJET
 					titleType = (type.match(/mur/gi) != null ? "Mur" : type.match(/porte/gi) != null ? "Porte" : getMaj(type));
 				}

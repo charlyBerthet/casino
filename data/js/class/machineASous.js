@@ -8,6 +8,7 @@ var MachineASous = function(numMachine, marque, numSocle, deno, billet, ticket, 
 	this.jeton = this.jeton || jeton || false;
 	this.jeu = this.jeu || jeu || "";
 	this.emplacement = this.emplacement || emplacement || null;
+	this.lastPaiement = this.lastPaiement || "Aucun";
 	
 	this.color = this.getColor();
 };

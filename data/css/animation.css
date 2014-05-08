@@ -5,14 +5,13 @@
 .txtRight{text-align:right;}
 .txtCenter{text-align:center;}
 
-/* FIRST ACCUEIL */
-#firstAccueil{
+
+.anim{
 	opacity:0.9;
 	position:absolute;
-	top:10px;
 	width:250px;
 	height:120px;
-	left:-220px;
+	left:50%;
 	top:50%;
 	margin-left:-145px;
 	margin-top:-80px;
@@ -20,15 +19,29 @@
 	border:3px solid white;
 	padding:20px;
 	border-radius:10px;
+	z-index:100000;
+}
+/* FIRST ACCUEIL */
+#firstAccueil{
+	left:-220px;
 }
 
 .infos{
 	font-size:10pt;
 }
-#butStopFirstAccueil{
-	position:absolute;
-	margin-left:250px;
-	margin-top:-30px;
-	border:1px solid white;
-	background-color:rgb(70,70,70);
+.butStopFirst{
+	position:absolute !important;
+	margin-left:250px !important;
+	margin-top:-30px !important;
+	border:1px solid white !important;
+	background-color:rgb(70,70,70) !important;
+}
+
+
+
+/*FIRST PARC*/
+#firstParc{
+	position:fixed;
+	top:-90px;
+	opacity:0;
 }

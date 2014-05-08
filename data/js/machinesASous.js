@@ -4,12 +4,12 @@ $(function(){
 		if(parcDeJeu != undefined && parcDeJeu != "undefined" && parcDeJeu != null)
 			parcDeJeu.clear();
 		
+		
 		if(document.URL.match(/#machinesasous/gi) != null){
 			//////////////////			CONTENU DU SCRIPT 			\\\\\\\\\\\\\\\\\\\\\
 			
 						////////		FUNCTIONS		\\\\\\\\\\\\
-			
-			// REDIMENSIONNE LA FENETRE
+						// REDIMENSIONNE LA FENETRE
 			var resizeDivParc = function(option){
 				// On met la div a la bonne taille
 				var SCREEN_WIDTH = (window.innerWidth);
@@ -18,9 +18,11 @@ $(function(){
 				var FOOTER_HEIGHT = parseInt($("#footerData").css("height").split("px")[0]);
 				
 				var height = (SCREEN_HEIGHT - (HEADER_HEIGHT+FOOTER_HEIGHT) - 60);
-				$("#parcDeJeu").css({
-					"width":SCREEN_WIDTH - 50,
-					"height": (height > 200 ? height : 200)
+				height = (height > 350 ? height : 350 );
+				var width = SCREEN_WIDTH - 50;
+				$("#parcMachineASous,#parcDeJeu").css({
+					"width": width,
+					"height": height
 				});
 				
 				$("#popUpDetailMAS").css({
@@ -50,12 +52,17 @@ $(function(){
 			};
 			
 			
+			
+			
+			
 						/////////		INITIALISE		\\\\\\\\\\\\\
 			// On MAJ la taille du parc
 			resizeDivParc();	
 			
 			// On cree un parc de jeu
-			parcDeJeu = chargerParcDeJeu("default");//new ParcDeJeu();
+			//parcDeJeu = chargerParcDeJeu("default");//new ParcDeJeu();
+			
+			parcDeJeu = getParcFromString( CONFIG["PARC_MAS"] );
 			if(parcDeJeu == null)
 				parcDeJeu = new ParcDeJeu();
 			
@@ -85,6 +92,12 @@ $(function(){
 				$("#popUpDetailMAS").css("display","none");
 			});
 		});
+		
+		
+		// ANIMATION SI FIRST TIME
+		if(animation.isFirstParc)
+			animation.firstParc();
+		
 	};
 	
 	jsNav["vtourParc"]  = function(){

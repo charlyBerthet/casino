@@ -125,7 +125,8 @@ $(function(){
 				});
 			});
 			
-			divContent.click(function(){
+			divContent.click(function(e){
+				
 				$("#bgIntro").fadeTo(2000,0.4);
 				$("#logo").fadeTo(2000,0,function(){
 					if(animation.isFirstAccueil)
@@ -134,9 +135,34 @@ $(function(){
 					INTER_VEILLE = setInterval(function(){TIME_VEILLE();}, 1000);
 					if(AFTER_INTRO == undefined || AFTER_INTRO == "undefined" || AFTER_INTRO == null || AFTER_INTRO == ""  || AFTER_INTRO == "#" || AFTER_INTRO == "#undefined")
 						AFTER_INTRO = "#accueil";
+					$("#divFun").remove();
 					$.mobile.changePage($(AFTER_INTRO), "fade", true, true);
 				});
-			});		
+			});
+			
+			
+			divContent.mousedown(function(e){
+				$("#divFun").remove();
+				var img=$("<div id='divFun' width='64px' height='64px'></div>");
+				var size = 20;
+				img.css({
+					"position":"absolute",
+					"left":e.pageX-(size/2)+"px",
+					"top":e.pageY-(size/2)+"px",
+					"z-index":"9999",
+					"border-radius":"99px",
+					"width":size+"px",
+					"height":size+"px",
+					"background-color":"rgba(255,255,255,0.3)",
+					"box-shadow":"0px 0px 15px white"
+				});
+				divContent.append(img);
+			});
+			divContent.mouseup(function(e){
+				$("#divFun").remove();
+			});
+			
+			
 		
 		}else{ // ON LANCE L'INTERVAL POUR LA MISE EN VEILLE
 			INTER_VEILLE = setInterval(function(){TIME_VEILLE();}, 1000);

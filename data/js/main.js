@@ -13,7 +13,7 @@ var clearSheduls = function(){
 $(function(){
 	// DEV BUG
 	//animation.firstAccueil();
-	
+	//animation.firstContenu(document.URL.match(/#[a-z0-9]*/i));
 	
 	// MISE EN VEILLE
 	TIME_VEILLE = function(){
@@ -119,13 +119,11 @@ $(function(){
 		
 		
 		// En fonction de la page clique pour voir le bon contenu
-		if(document.URL.match(/event/gi) != null){
+		if(document.URL.match(/event/gi) != null){			// EVENT
 			$("a[data-idjs='eventApercu']").click();
-		}
-		else if(document.URL.match(/restaurant/gi) != null){
+		}else if(document.URL.match(/restaurant/gi) != null){// RESTAURANT
 			$("a[data-idjs='vtourRestau']").click();
-		}
-		else if(document.URL.match(/purple/gi) != null){	// PURPLE
+		}else if(document.URL.match(/purple/gi) != null){	// PURPLE
 			$("a[data-idjs='vtourPurple']").click();
 		}else if(document.URL.match(/machine/gi) != null){	// MACHINES A SOUS
 			$("a[data-idjs='vtourParc']").click();
@@ -133,15 +131,21 @@ $(function(){
 			$("a[data-idjs='vtourTables']").click();
 		}else if(document.URL.match(/palo/gi) != null){		// PALO ALTO
 			$("a[data-idjs='videoPalo']").click();
-		}else if(document.URL.match(/propos/gi) != null){		// PALO ALTO
+		}else if(document.URL.match(/propos/gi) != null){	// A PROPOS
 			$("a[data-idjs='aPropos']").click();
 		}else if(document.URL.match(/(intro)|(\/$)|(html$)/gi) != null){	// INTRO, VEILLE
 			$("#bgIntro").remove();
 			$("#logo").remove();
 			INTRO();
-			
 		}
-			
+		
+		
+		// ANIMATION FIRST CONTENT
+		if(document.URL.match(/(event|restaurant|purple|machine|tables|palo|propos)/gi) != null){
+			var id = document.URL.match(/#[a-z0-9]*/i);
+			if(animation.isFirstContenu)
+				animation.firstContenu(id);
+		}
 		
 	});
 	
