@@ -20,8 +20,7 @@ $(function(){
 		window.onresize = function(event) {
 			resizeVTourPurple();
 		};
-		
-		
+
 		// SI ONLINE alors recupere sur le site
 		///if(navigator.onLine)
 			

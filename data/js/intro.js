@@ -71,7 +71,7 @@ $(function(){
 					"height":hLogo+"px"
 				});
 				
-			}
+			};
 			resizeIntro();
 			$(window).unbind("onresize");
 			window.onresize = function(event) {	resizeIntro();};

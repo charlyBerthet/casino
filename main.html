@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Casino de Megeve - Tablette</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Charly Berthet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" type="image/png" href="data/img/logo.png" />
+
+<!-- INCLUSION CSS -->
+<link rel="stylesheet" type="text/css" href="data/css/style.css" />
+<link rel="stylesheet" type="text/css" href="data/css/accueil.css" />
+<link rel="stylesheet" type="text/css" href="data/css/animation.css" />
+<link rel="stylesheet" type="text/css" href="data/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="data/css/jquery.mobile.css" />
+<link rel="stylesheet" type="text/css" href="data/css/datebox.css" />
+
+
+<!-- INCLUSION JAVASCRIPT JQUERY -->
+<script type="text/javascript" src="data/js/fw/jquery.js"></script>
+<script type="text/javascript" src="data/js/fw/jquery-ui.js"></script>
+
+
+<!-- INCLUSION js CONFIG -->
+<script type="text/javascript" src="editeAppliCasinoMegeve/dataAppli.js"></script>
+<!-- <script type="text/javascript" src="http://charlyberthet.github.io/casino/editeAppliCasinoMegeve/dataAppli.js"></script> -->
+
+<!-- INCLUSION js CLASS -->
+<script type="text/javascript" src="data/js/class/calendar.js"></script>
+<script type="text/javascript" src="data/js/class/galerieViewer.js"></script>
+<script type="text/javascript" src="data/js/class/emplacement.js"></script>
+<script type="text/javascript" src="data/js/class/machineASous.js"></script>
+<script type="text/javascript" src="data/js/class/objet.js"></script>
+<script type="text/javascript" src="data/js/class/parcDeJeu.js"></script>
+
+<!-- INCLUSION js MAIN -->
+<script type="text/javascript" src="data/js/animation.js"></script>
+<script type="text/javascript" src="data/js/main.js"></script>
+
+
+<!-- INCLUSION JAVASCRIPT JQUERY MOBILE -->
+<script type="text/javascript" src="data/js/fw/jquery.mobile.js"></script>
+<script type="text/javascript" src="data/js/fw/datebox.core.js"></script>
+<script type="text/javascript" src="data/js/fw/datebox.calbox.js"></script>
+<script type="text/javascript" src="data/js/fw/datebox.flipbox.js"></script>
+<script type="text/javascript" src="data/js/fw/jquery.mobile.datebox.utf8.js"></script>
+
+
+</head>
+<body>
+	<!-- ###################################################################################" -->
+									<!-- HEADER DATA -->
+	<!-- ###################################################################################" -->									
+	<div id="headerData" style="display: none;">
+		<div class="divLogosInfosRapides">
+			<p class="logos inlineBlock">
+				<img class='logoMegeve' src="data/img/casino-megeve.png"
+					alt="Logo Casino Megeve" width="320" /> <img class='logoBarriere'
+					src="data/img/casino-barriere.png" alt="Logo Casino Barriere"
+					width="120" />
+			</p>
+			<div class="infosRapideCasino inlineBlock">
+				<div>
+					<span class="empty" data-empty="machines a sous"></span> MACHINES A
+					SOUS •
+				</div>
+				<div>
+					<span class="empty" data-empty="tables de jeux"></span> TABLES DE
+					JEUX •
+				</div>
+				<div>
+					<span class="empty" data-empty="restaurant"></span> RESTAURANT •
+				</div>
+				<div>
+					<span class="empty" data-empty="bars"></span> BARS
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+	
+	<!-- ###################################################################################" -->
+								<!-- GENERAL DATA  -->
+	<!-- ###################################################################################" -->
+	<div id="data" style="display: none;">
+		<button class="arrow-r" data-icon='arrow-r' data-iconpos='right'></button>
+	</div>
+
+	<!-- ###################################################################################" -->
+								<!-- FOOTER DATA -->
+	<!-- ###################################################################################" -->
+	<div id="footerData" style="display: none;">
+		<h4>Casino Megeve</h4>
+	</div>
+
+	<!-- ###################################################################################" -->
+									<!-- PAGE INTRO -->
+	<!-- ###################################################################################" -->
+	<div data-role="page" data-theme="b" id="intro">
+
+		<script type="text/javascript" src="data/js/intro.js"></script>
+
+		<!-- <div data-role="header" style="position:fixed;top:0px;left:0px;width:100%;z-index:20;">
+			<ul class="align-center" data-role="listview" data-inset="true">
+				<li><a id='butpasser' href="#accueil" data-role="button"
+					data-mini="true" data-icon="arrow-r" data-iconpos="right"
+					data-transition="slide">Passer</a></li>
+			</ul>
+		</div>  -->
+		
+		<div data-role="content">
+			<div style="background-image:url(data/img/intro/trame.png);left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 100%; width: 100%; z-index:18; position: fixed;"></div>
+		</div>
+		<!-- /content -->
+
+	</div>
+
+
+	<!-- ###################################################################################" -->
+									<!-- PAGE ACCUEIL -->
+	<!-- ###################################################################################" -->
+	<div data-role="page" data-theme="b" id="accueil">
+
+		<!-- HEADER -->
+		<div data-role="header"></div>
+		<!-- /header -->
+
+		<!-- CONTENT -->
+		<div data-role="content">
+			<ul data-role="listview" id="menuListe">
+			</ul>
+		</div>
+		<!-- /content -->
+
+		<!-- FOOTER -->
+		<div data-role="footer"></div>
+		<!-- /footer -->
+
+	</div>
+
+	<!-- ###################################################################################" -->
+										<!-- PAGE EVENT -->
+	<!-- ###################################################################################" -->
+	<div data-role='page' data-theme="b" id='event'>
+		<div data-role='content'>
+			<div>
+
+				<div data-role="navbar" class="navbar">
+					<ul>
+						<li><a data-idjs="eventApercu" href="#" data-active="true"
+							class="ui-btn-active">Aperçu</a></li>
+						<li><a data-idjs="eventCalendrier" data-active="false"
+							href="#">Calendrier</a></li>
+					</ul>
+				</div>
+
+				<!-- EVENT APERCU -->
+				<div id="eventApercu" class="hide">
+					<div id="eventTab">
+						<img class='inlineBlock' id='imgEvent' title='' src='' alt=''
+							width="45%" />
+						<div id="infosEvent" class='inlineBlock'>
+							<div id="divInfosEvent">
+								<h4></h4>
+								<p id="dateEvent">
+									Le <span class='date'></span>
+								</p>
+								<div class='content'></div>
+								<p id="lieuEvent">
+									Au <span class='lieu'></span>
+								</p>
+							</div>
+							<div id="changeEvent">
+								<button class="butChangeEvent" data-idx="-1" data-icon='arrow-l'
+									data-iconpos='left'>Précédent</button>
+								<button class="butChangeEvent" data-idx="1" data-icon='arrow-r'
+									data-iconpos='right'>Suivant</button>
+							</div>
+						</div>
+					</div>
+					
+					
+				</div>
+
+				<!-- EVENT CALENDRIER -->
+				<div id="eventCalendrier" class="hide">
+					<div id="eventCalendrierDiv" class='inlineBlock'>
+					
+						<input data-theme="a" name="mydate" id="mydate" type="date" data-role="datebox"
+						   data-options='{"mode": "calbox", "useInline": true}'>
+					</div>
+					
+					<div  id="eventCalendrierEventDiv" class='inlineBlock'>
+						<form>
+					   		<input data-type="search" id="filterEventCasino" placeHolder="saisir critère(s)">
+						</form>
+						<div data-role="collapsibleset" data-filter="true"
+							data-inset="true" id="contentFilterEventCasino"
+							data-input="#filterEventCasino">
+							
+							
+						</div>
+						<!-- <h4></h4>
+						<div >
+							<img class='inlineBlock' id='imgEventCal' title='' src='' alt=''
+							width="150px" />
+							<p class='inlineBlock' id="contentEventCal">
+							
+							</p>
+							<p id="lieuEventCal">
+							
+							</p>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- ###################################################################################" -->
+									<!-- PAGE RESTAURANT -->
+	<!-- ###################################################################################" -->
+	<div data-role='page' data-theme="b" id='restaurant'>
+		<div data-role='content'>
+			<div data-role="navbar" class="navbar">
+				<ul>
+					<li><a data-idjs="vtourRestau" href="#" data-active="true"
+						class="ui-btn-active">Tour Virtuel</a></li>
+					<li><a data-idjs="carte" data-active="false"
+						href="#">La Carte</a></li>
+				</ul>
+			</div>
+			
+			
+			<!-- VTOUR -->
+			<div id="vtourRestau"  class="hide">
+				<script src="data/pano/restaurant/tour.js"></script>
+				
+				<div id="divVTourRestau">
+					<noscript>
+					<table style="width:100%;height:100%;">
+					<tr style="valign:middle;">
+					<td><div style="text-align:center;">ERREUR:<br/>
+					Javascript non activÃ©<br/>
+					<br/>
+					ERROR:<br/>
+					Javascript not activated<br/>
+					<br/>
+					</div></td>
+					</tr>
+					</table>
+					</noscript>
+					<script>
+					embedpano({swf:"data/pano/restaurant/tour.swf", xml:"data/pano/restaurant/tour.xml", target:"divVTourRestau", html5:"auto", passQueryParameters:true});
+					</script> 
+				
+				</div>
+			</div>
+			
+			
+			<!-- CARTE -->
+			<div id="carte" class="hide">
+				<div id="divCarte">
+					<a class="pdfview" href="http://www.casino-megeve.com/restaurant-l-equipe/carte.pdf">La Carte</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- ###################################################################################" -->
+								<!-- PAGE PURPLE LOUNGE -->
+	<!-- ###################################################################################" -->
+	<div data-role='page' data-theme="b" id='purpleLounge'>
+		<div data-role='content'>
+			<div data-role="navbar" class="navbar">
+				<ul>
+					
+					<li><a data-idjs="vtourPurple" href="#" data-active="true"
+						class="ui-btn-active">Tour Virtuel</a></li>
+					<li><a data-idjs="photosPurple" href="#" data-active="false"
+						>En photos</a></li>
+					<li><a data-idjs="videoPurple" data-active="false"
+						href="#">En vidéo</a></li>
+					<li><a data-idjs="eventPurple" href="#" data-active="false"
+						>Agenda</a></li>
+				</ul>
+			</div>
+			
+			
+			<!-- VTOUR PURPLE-->
+			<div id="vtourPurple"  class="hide">
+				<script src="data/pano/purpleLounge/tour.js"></script>
+				<div id="divVTourPurple">
+					<noscript>
+					<table style="width:100%;height:100%;">
+					<tr style="valign:middle;">
+					<td><div style="text-align:center;">ERREUR:<br/>
+					Javascript non activÃ©<br/>
+					<br/>
+					ERROR:<br/>
+					Javascript not activated<br/>
+					<br/>
+					</div></td>
+					</tr>
+					</table>
+					</noscript>
+					<script>
+					embedpano({swf:"data/pano/purpleLounge/tour.swf", xml:"data/pano/purpleLounge/tour.xml", target:"divVTourPurple", html5:"auto", passQueryParameters:true});
+	
+					
+					</script> 
+				
+				</div>		
+			</div>
+			
+			
+			<!-- PHOTOS PURPLE -->
+			<div id="photosPurple" class="hide">
+				<div id="divPhotosPurple">
+				</div>
+			</div>
+			
+			<!-- VIDEO PURPLE -->
+			<div id="videoPurple" class="hide">
+				<div id="divVideoPurple">
+					<iframe src="http://player.vimeo.com/video/20301738?byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" width="100%" height="100%" frameborder="0"></iframe>
+				</div>
+			</div>
+			
+			
+			<!-- EVENT PURPLE -->
+			<div id="eventPurple" class="hide">
+				<div id="divEventPurple">
+					<form>
+					    <input data-type="search" id="filterEventPurple">
+					</form>
+					<div data-role="collapsibleset" data-filter="true"
+						data-inset="true" id="contentFilterEventPurple"
+						data-input="#filterEventPurple">
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<!-- ###################################################################################" -->
+								<!-- PAGE MACHINES A SOUS -->
+	<!-- ###################################################################################" -->
+	<div data-role='page' data-theme="b" id='machinesASous'>
+		<div data-role='content'>
+		
+			<div data-role="navbar" class="navbar">
+				<ul>
+					<li><a data-idjs="vtourParc" href="#" data-active="true" class="ui-btn-active">
+						Tour Virtuel</a></li>
+					<li><a data-idjs="infosParc" href="#" data-active="false">
+						Les infos</a></li>
+					<li><a data-idjs="parcMachineASous" href="#" data-active="false"
+						>Le Parc</a></li>
+					<li><a data-idjs="videoParc" href="#" data-active="false">
+						En vidéo</a></li>
+				</ul>
+			</div>
+			
+			<!-- PARC DE JEU -->
+			<div id="parcMachineASous" class="hide">
+				<table  id='parcDeJeu'></table>
+				
+				<div id='searchMachineASous'>
+					<form class="ui-filterable" style="opacity:0.8">
+					    <input placeHolder='Rechercher n°' id="inSearchMachine" data-type="search">
+					</form>
+				</div>
+				
+				
+				<div id="popUpDetailMAS" style="display:none;opacity:0;">
+					<a href="#" id="butCloseDetailMAS" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+					<p class="typeObjet">Machine à Sous</p>
+					<div id="didContentPopUp">
+						<div class="titleInfos">
+							<p class="numO">N°</p>
+							<p class="marqueO">Marque</p>
+							<p class="numSocleO">N° socle</p>
+							<p class="denoO">Dénomination</p>
+							<p class="paiementO">Paiement</p>
+							<p class="jeuO">Jeu</p>
+							<p class="dernierPaiementO">Dernier paiement</p>
+						</div>
+						<div class="contentInfos">
+							<p class="numO">236</p>
+							<p class="marqueO">Bally</p>
+							<p class="numSocleO">45</p>
+							<p class="denoO">0.50€</p>
+							<p class="paiementO">Billet/Ticket</p>
+							<p class="jeuO">PokerPokerPokerPokerPokerPokerPokerPokerPokerPokerPokerPokerPoker</p>
+							<p class="dernierPaiementO">30/04/2014</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- VTOUR MAS -->
+			<div id="vtourParc" class="hide">
+				<script src="data/pano/machinesASous/tour.js"></script>
+				<div id="vTourMachineASous">
+					<noscript>
+					<table style="width:100%;height:100%;">
+					<tr style="valign:middle;">
+					<td><div style="text-align:center;">ERREUR:<br/>
+					Javascript non activÃ©<br/>
+					<br/>
+					ERROR:<br/>
+					Javascript not activated<br/>
+					<br/>
+					</div></td>
+					</tr>
+					</table>
+					</noscript>
+					<script>
+					embedpano({swf:"data/pano/machinesASous/tour.swf", xml:"data/pano/machinesASous/tour.xml", target:"vTourMachineASous", html5:"auto", passQueryParameters:true});
+					</script> 
+				
+				</div>
+			</div> 
+		</div>
+
+
+		<!-- VIDEO PARC DE JEU -->
+		<div id="videoParc" class="hide">
+			<div id="divVideoParc">
+				<iframe
+					src="http://player.vimeo.com/video/61726883?byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1"
+					width="100%" height="100%" frameborder="0"></iframe>
+			</div>
+		</div>
+		
+		
+		
+		<!-- LES INFOS PARC DE JEU -->
+		<div id="infosParc" class="hide" style="text-align:center;">
+			<!-- <img id="bgMAS" alt="machine a sous" src="data/img/machinesASous/mas.jpg" width="800px" height="2700px"/>	 -->
+			<div id="divInfosParc">
+				<p class="txtBig bold">65 machines de 1ct à 5 euros !</p>
+				<p><span class="bold">Horraires :</span> ouvert tous les jours de 11h00 à 3h00 </br>(<span class="sousLigne txtSmall">ouvert jusqu'à 4h30 du 25 décembre au 04 Janvier</span>).</p>
+				<p>Acceptent jetons <span class="bold">OU</span> tickets & billets</p>
+				<p class="txtSmall">Casino de Megève, 199 rue Charles Feige - Tél. 04 50 93 01 83</p>
+				<p class="txtSmall accesLibre">Accès libre sur simple vérification d'identité </br>(en application des nouvelles dispositions de la réglementation)</p>
+			</div>
+			
+		</div>
+		
+		
+	</div>
+	
+	
+	
+		<!-- ###################################################################################" -->
+									<!-- PAGE TABLES DE JEU -->
+		<!-- ###################################################################################" -->
+		<div data-role='page' data-theme="b" id='tablesDeJeux'>
+			<div data-role='content'>
+			
+				<div data-role="navbar" class="navbar">
+					<ul>
+						<li><a data-idjs="vtourTables" href="#" data-active="true" class="ui-btn-active">
+							Tour Virtuel</a></li>
+						<li><a data-idjs="infosTables" href="#" data-active="false">
+							Les infos</a></li>
+					</ul>
+				</div>
+			
+			
+			<!-- Tour Virtuel TABLES -->
+			<div id="vtourTables" class="hide">
+				<script src="data/pano/tablesDeJeux/tour.js"></script>
+				<div id="vTourTablesDiv">
+					<noscript>
+					<table style="width:100%;height:100%;">
+					<tr style="valign:middle;">
+					<td><div style="text-align:center;">ERREUR:<br/>
+					Javascript non activÃ©<br/>
+					<br/>
+					ERROR:<br/>
+					Javascript not activated<br/>
+					<br/>
+					</div></td>
+					</tr>
+					</table>
+					</noscript>
+					<script>
+					embedpano({swf:"data/pano/tablesDeJeux/tour.swf", xml:"data/pano/tablesDeJeux/tour.xml", target:"vTourTablesDiv", html5:"auto", passQueryParameters:true});
+					</script> 
+				
+				</div>
+				
+			</div>
+
+
+			<!-- INFOS TABLES -->
+			<div id="infosTables" class="hide">
+				<div id="butJeux">
+					
+				</div>
+				<div id="infosJeu">
+					<p id="titleInfosJeu" class="bold txtBig">Choisissez un jeu</p>
+					<p id="horraireInfosJeu" class="sousLigne"></p>
+					<p id="contentInfosJeu"></p>
+					<p id="accesLibreInfosJeu" class="txtSmall">Accès libre sur simple vérification d'identité </br>(en application des nouvelles dispositions de la réglementation)</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- ###################################################################################" -->
+						<!-- PAGE PALO ALTO -->
+	<!-- ###################################################################################" -->
+	<div data-role='page' data-theme="b" id='paloAlto'>
+		<div data-role='content' style="overflow:auto;">
+
+			<div data-role="navbar" class="navbar">
+				<ul>
+					<li><a data-idjs="videoPalo" href="#" data-active="true"
+						class="ui-btn-active">En vidéo</a></li>
+					<li><a data-idjs="sitePalo" href="#" data-active="false">
+							Le site</a></li>
+				</ul>
+			</div>
+			
+			<!-- VIDEO PALO -->
+			<div id="videoPalo" class="hide">
+				<div id="divVideoPalo">
+					<iframe
+						src="http://player.vimeo.com/video/20291055?byline=0&portrait=0&color=ffffff&autoplay=1"
+						width="100%" height="100%" frameborder="0"></iframe>
+				</div>
+			</div>
+			
+			<!-- SITE PALO -->
+			<div id="sitePalo" class="hide">
+				<div id="divSitePalo">
+					<iframe width="100%" height="100%" src="http://www.palo-alto.fr/"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<!-- ###################################################################################" -->
+						<!-- PAGE A PROPOS -->
+	<!-- ###################################################################################" -->
+	<div data-role='page' data-theme="b" id='aProposContact'>
+		<div data-role='content' style="overflow:auto;">
+			<div data-role="navbar" class="navbar">
+				<ul>
+					<li><a data-idjs="aPropos" href="#" data-active="true"
+						class="ui-btn-active">A Propos</a></li>
+					<li><a data-idjs="leTemps" href="#" data-active="false">
+							Groupe Lucien Barrière</a></li>
+				</ul>
+			</div>
+			
+			<!-- A PROPOS -->
+			<div id="aPropos" class="hide">
+				<div id="aProposInfos">
+					<p><span class="bold txtBig">CASINO de Megève</span><span class="txtSmall"> - RCS B 402746226 - APE 9200 Z</span></p>
+					<p>Siège social : S.A.S Casino de megève</p>
+					<p>Tél : 04 50 93 01 83</p>
+					<p>Mail : contact@casino-megeve.com</p>
+				</div>
+				
+			
+				<div id="aProposAccesLibre">
+					<p class="accesLibre txtSmall">Accès libre sur simple vérification d'identité (en application des nouvelles dispositions de la réglementation)</p>
+					<p class="txtSmall">Jouer comporte des risques : endettement, dépendance… Appelez le 0805 02 00 00 (appel gratuit)</p>
+				</div>
+				
+			</div>
+		</div>
+		
+		<!-- A LE TEMPS -->
+		<div id="leTemps" class="hide">
+		   <!-- <div id="aProposMeteo">
+					<!-- <div class="meteoWidget" style="font-family: Arial;background-color: #fbfbfb;border: 1px solid #e7e7e7;width: 255px;height: 335px;-moz-box-shadow: 0 0 2px 1px #e7e7e7;-webkit-box-shadow: 0 0 2px 1px #e7e7e7;box-shadow: 0 0 2px 1px #e7e7e7;overflow: hidden; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;"><div style="width: 255px;height: 335px;"><div style="margin:7px 10px;"><div style="color: #222222;font-family: Arial;font-size: 12px;font-weight: bold;margin: 0px 0px 7px 0px;line-height: 14px;">Prévisions météorologiques<br/><span style="font-weight:normal;">Megève</span></div><iframe id="widget-frame" src="http://www.meteovista.fr/Go/ExternalWidgetsNew/ThreeDaysCity?gid=4284698&sizeType=1&temperatureScale=Celsius&defaultSettings=True" width="235" height="216" frameborder="0" scrolling="no" style="border: none;" allowtransparency="true"></iframe><a href="http://www.meteovista.fr/Europe/France/Megeve/4284698" style="background: url(http://www.meteovista.fr/Shared/Images/list_icon_blue_trans.png) no-repeat scroll left 1px transparent;color: #0160b2;font-family: Arial;font-size: 12px;font-weight: normal;padding-left: 14px;margin: 7px 0px 5px 0px;line-height: 12px;outline: none;text-decoration: none;display: inline-block;" target="_blank">Météo à Megève</a><a href="http://www.meteovista.fr/" style="display: block;height: 25px;width: 113px;margin: 0px 10px 8px 0px;outline: none;text-decoration: none;" title="Meteovista.fr la météo autrement" target="_blank"><img src="http://www.meteovista.fr/Shared/Images/variations/fr-FR/new-widget-logo-FR-color.png" width="113" height="25" alt="Meteovista.fr la météo autrement" style="border: none;background-color: transparent;box-shadow: none;" /></a></div></div></div>
+				</div> -->
+			<div id="leGroupe">
+				<iframe src="http://www.lucienbarriere.com/accueil.html"	 id="iFrameGroupe"></iframe>
+			</div>	
+		</div>
+	</div>
+</body>
+</html>
+
+

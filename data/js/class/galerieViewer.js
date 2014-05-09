@@ -18,7 +18,16 @@ var GalerieViewer = function(jsonParams){
 	this.height = this.height || jsonParams["height"];
 	
 	this.show();
-	
+	this.chargement = $("<img id='chargement' alt='Veuillez patienter...' src='data/img/animation/chargement.gif'/>");
+	this.chargement.css({
+		"width":"32px",
+		"height":"32px",
+		"position":"absolute",
+		"top":"50%",
+		"left":"50%",
+		"margin-top":"-16px",
+		"margin-left":"-16px"
+	});
 	this.elImg = null;
 };
 
@@ -26,50 +35,57 @@ var GalerieViewer = function(jsonParams){
 
 
 GalerieViewer.prototype.show = function(){
-	this.elem.html("<img id='"+this.ID_IMG+"' src='"+this.path+"/"+this.num+"."+this.format+"' height='100%'/>");
-	this.elem.css("text-align","center");
-	this.elImg = $("#"+this.ID_IMG);
-	var me = this;
-	var butR = $("<button class='ui-btn ui-btn-icon-right ui-icon-carat-r'></button>");
-	var butL = $("<button class='ui-btn ui-btn-icon-left ui-icon-carat-l'></button>");
-	
-	butR.css({
-		opacity:"0.8",
-		width:"0px",
-		height:"40px",
-		display:"inline-block",
-		"vertical-align":"top",
-		"margin-left":"20px",
-		"position":"absolute",
-		"right":"40px"
+	this.elem.html(this.chargement);
+	var img = $("<img id='"+this.ID_IMG+"' src='"+this.path+"/"+this.num+"."+this.format+"' height='100%'/>");
+	var that = this;
+	img.unbind("load");
+	img.load(function(){
+		$("#chargement").remove();
+		that.elem.html(img);
+		that.elem.css("text-align","center");
+		that.elImg = $("#"+that.ID_IMG);
+		var me = that;
+		var butR = $("<button class='ui-btn ui-btn-icon-right ui-icon-carat-r'></button>");
+		var butL = $("<button class='ui-btn ui-btn-icon-left ui-icon-carat-l'></button>");
 		
+		butR.css({
+			opacity:"0.8",
+			width:"0px",
+			height:"40px",
+			display:"inline-block",
+			"vertical-align":"top",
+			"margin-left":"20px",
+			"position":"absolute",
+			"right":"40px"
+			
+		});
+		
+		butR.click(function(){
+			me.nextPhoto(1);
+		});
+		
+		butL.css({
+			opacity:"0.8",
+			width:"0px",
+			height:"40px",
+			display:"inline-block",
+			"vertical-align":"top",
+			"margin-right":"20px",
+			"position":"absolute",
+			"left":"40px"
+		});
+		
+		butL.click(function(){
+			me.nextPhoto(-1);
+		});
+		
+		var divBut = $("<div></div>");
+		divBut.append(butL);
+		divBut.append(butR);
+		divBut.css("display","block");
+		divBut.css("margin-top","-55px");
+		that.elem.append(divBut);
 	});
-	
-	butR.click(function(){
-		me.nextPhoto(1);
-	});
-	
-	butL.css({
-		opacity:"0.8",
-		width:"0px",
-		height:"40px",
-		display:"inline-block",
-		"vertical-align":"top",
-		"margin-right":"20px",
-		"position":"absolute",
-		"left":"40px"
-	});
-	
-	butL.click(function(){
-		me.nextPhoto(-1);
-	});
-	
-	var divBut = $("<div></div>");
-	divBut.append(butL);
-	divBut.append(butR);
-	divBut.css("display","block");
-	divBut.css("margin-top","-55px");
-	this.elem.append(divBut);
 };
 
 
@@ -83,10 +99,16 @@ GalerieViewer.prototype.nextPhoto = function(next){
 	
 	var me = this;
 	$("#"+me.ID_IMG).animate({"opacity":"0"},100,function(){
+		me.elem.append(me.chargement);
 		$("#"+me.ID_IMG).attr({
 			"src":me.path+"/"+me.num+"."+me.format
 		});
-		$("#"+me.ID_IMG).animate({"opacity":"1"},100);
+		$("#"+me.ID_IMG).unbind("load");
+		$("#"+me.ID_IMG).load(function(){
+			$("#chargement").remove();
+			$("#"+me.ID_IMG).animate({"opacity":"1"},100);
+		});
+		
 	});
 	
 };

@@ -15,3 +15,11 @@
 .meteoWidget{
 	margin:auto;
 }
+
+#leGroupe{
+	/*background-color:red;*/
+	margin:auto;
+	margin-bottom:15px;
+	padding:5px;
+	overflow:hidden;
+}
