@@ -161,7 +161,9 @@ $(function(){
 			divContent.mouseup(function(e){
 				$("#divFun").remove();
 			});
-			
+			divContent.bind( "tap",function(){
+				divContent.click();
+			});
 			
 		
 		}else{ // ON LANCE L'INTERVAL POUR LA MISE EN VEILLE
